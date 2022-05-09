@@ -15,9 +15,7 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
 import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
-import com.webdoc.Activities.MainActivity
 import com.webdoc.Essentials.Global
-import com.webdoc.Essentials.Preferences
 import com.webdoc.theforum.databinding.ActivityOtpverificationBinding
 import java.util.concurrent.TimeUnit
 

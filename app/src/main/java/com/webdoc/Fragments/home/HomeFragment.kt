@@ -7,6 +7,8 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Build
 import android.os.Bundle
+import android.preference.PreferenceManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +18,6 @@ import androidx.annotation.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.tasks.OnCompleteListener
@@ -26,9 +27,9 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.webdoc.Activities.MainActivity
 import com.webdoc.Adapters.CurrentBiddingAdapter
-import com.webdoc.Adapters.HotSellingAdapter
 import com.webdoc.Adapters.MarlaCategoriesAdapter
 import com.webdoc.Adapters.PriceCategoriesAdapter
+import com.webdoc.Essentials.PreferencesNew
 import com.webdoc.ModelClasses.MarlaCategories
 import com.webdoc.ModelClasses.PriceCategories
 import com.webdoc.theforum.databinding.FragmentHomeBinding
@@ -37,6 +38,9 @@ import java.util.*
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var editt: SharedPreferences.Editor
+    private lateinit var prefs: SharedPreferences
+    var preferences: PreferencesNew? = null
     var check = 1
     var city = ""
     var arrayOfCities = arrayOf(
@@ -63,10 +67,11 @@ class HomeFragment : Fragment() {
     )
     var userid: String = ""
     private var databaseReference: DatabaseReference? = null
-    lateinit var prefs: SharedPreferences
+
     lateinit var edit: SharedPreferences.Editor
     var username: String = ""
     var useremail: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -79,7 +84,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-
+        preferences = PreferencesNew(activity as MainActivity)
         initViews()
         clickListeners()
         return binding.root
@@ -115,6 +120,19 @@ class HomeFragment : Fragment() {
         }
 
         binding.clAppartment.setOnClickListener {
+            //    PreferencesNew.getInstance(applicationContext).kEY_ApplicationUserId == "jadoon"
+
+
+
+
+            edit.putString(PreferencesNew.KEY_ApplicationUserId, "jadoon");
+            edit.commit();
+            val useridss = prefs.getString(PreferencesNew.KEY_ApplicationUserId, "").toString()
+            Log.i(
+                "temp",
+                useridss + ""
+            )
+
 
             binding.view5.visibility = View.VISIBLE
             binding.view6.visibility = View.GONE
@@ -213,6 +231,7 @@ class HomeFragment : Fragment() {
         }
         this.setCompoundDrawables(drawable, null, null, null)
     }
+
     private fun readData(id: String) {
         databaseReference = FirebaseDatabase.getInstance().getReference("user")
         databaseReference!!.child(id).get()

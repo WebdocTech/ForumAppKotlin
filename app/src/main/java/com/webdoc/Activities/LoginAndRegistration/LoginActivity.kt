@@ -32,6 +32,7 @@ import com.webdoc.Activities.LoginAndRegistration.ViewModels.LoginViewModel
 import com.webdoc.Activities.LoginAndRegistration.ViewModels.RegistrationViewModel
 import com.webdoc.Activities.MainActivity
 import com.webdoc.Essentials.Global
+import com.webdoc.Essentials.PreferencesNew
 import com.webdoc.ModelClasses.UserModel
 import com.webdoc.theforum.R
 import com.webdoc.theforum.databinding.ActivityLoginBinding
@@ -244,7 +245,7 @@ class LoginActivity : AppCompatActivity() {
 
                     uploadData()
 
-                    edit.putString("id", uid)
+                    edit.putString(PreferencesNew.KEY_ApplicationUserId, uid)
                     edit.commit()
                     edit.apply()
 
@@ -263,7 +264,7 @@ class LoginActivity : AppCompatActivity() {
 
                     //  uploadDatawithImage()
 
-                    edit.putString("id", uid)
+                    edit.putString(PreferencesNew.KEY_ApplicationUserId, uid)
                     edit.commit()
                     edit.apply()
 

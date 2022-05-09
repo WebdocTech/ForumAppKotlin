@@ -13,7 +13,6 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
 import com.webdoc.Essentials.Global
-import com.webdoc.Essentials.Preferences
 import com.webdoc.theforum.databinding.ActivityAuthenticationBinding
 import java.util.concurrent.TimeUnit
 
@@ -79,27 +78,37 @@ class AuthenticationActivity : AppCompatActivity() {
                     Toast.makeText(
                         this@AuthenticationActivity,
                         "Verification Successful..",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    if (Preferences.getInstance(applicationContext).getKeyIsRegister()) {
-                        Preferences.getInstance(applicationContext).setKeyIsLogin(true)
-                        startActivity(
-                            Intent(
-                                this@AuthenticationActivity,
-                                LoginActivity::class.java
-                            )
-                        )
-                        //                                Intent intent = new Intent(OTPVerificationActivity.this, GetUserDataActivity.class);
+                        Toast.LENGTH_SHORT)
+//                                startActivity(
+//                            Intent(
+//                                this@AuthenticationActivity,
+//                               LoginActivity::class.java
+//                           )
+//                       )
+//                                                    Intent intent = new Intent(OTPVerificationActivity.this, GetUserDataActivity.class);
 //                                intent.putExtra("phoneNo", phoneNo);
-//                                startActivity(intent);
-                        finishAffinity()
-                    } else {
-                        val intent =
-                            Intent(this@AuthenticationActivity, LoginOptionsActivity::class.java)
-                        intent.putExtra("phoneNo", phoneNo)
-                        startActivity(intent)
-                        finish()
-                    }
+//                               startActivity(intent);
+//                       finishAffinity()
+//                    ).show()
+//                    if (Preferences.getInstance(applicationContext).getKeyIsRegister()) {
+//                        Preferences.getInstance(applicationContext).setKeyIsLogin(true)
+//                        startActivity(
+//                            Intent(
+//                                this@AuthenticationActivity,
+//                                LoginActivity::class.java
+//                            )
+//                        )
+//                        //                                Intent intent = new Intent(OTPVerificationActivity.this, GetUserDataActivity.class);
+////                                intent.putExtra("phoneNo", phoneNo);
+////                                startActivity(intent);
+//                        finishAffinity()
+//                    } else {
+//                        val intent =
+//                            Intent(this@AuthenticationActivity, LoginOptionsActivity::class.java)
+//                        intent.putExtra("phoneNo", phoneNo)
+//                        startActivity(intent)
+//                        finish()
+//                    }
                 } else {
                     Global.utils!!.hideCustomLoadingDialog()
                     Toast.makeText(
