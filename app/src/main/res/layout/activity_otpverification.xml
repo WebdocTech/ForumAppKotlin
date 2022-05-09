@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context="com.webdoc.Activities.LoginAndRegistration.OTPVerificationActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+             />
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Verification"
+            android:textColor="@color/black"
+
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
+
+        <TextView
+            android:id="@+id/tv_dumyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:text="We have sent you an OTP via sms for mobile number verification"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_account" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/CodeLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintDimensionRatio="h,4:0.6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dumyText">
+
+            <EditText
+                android:id="@+id/et_getCodeOne"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/loginpin_background"
+                android:ems="10"
+                android:hint="*"
+                android:textColor="@color/white"
+                android:textColorHint="#B8B8B8"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="w,2:2"
+                app:layout_constraintEnd_toStartOf="@+id/et_getCodeTwo"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/et_getCodeTwo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/loginpin_background"
+                android:ems="10"
+                android:hint="*"
+                android:textColor="@color/white"
+                android:textColorHint="#B8B8B8"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="w,2:2"
+                app:layout_constraintEnd_toStartOf="@+id/et_getCodeThree"
+                app:layout_constraintStart_toEndOf="@+id/et_getCodeOne"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/et_getCodeThree"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/loginpin_background"
+                android:ems="10"
+                android:hint="*"
+                android:textColor="@color/white"
+                android:textColorHint="#B8B8B8"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="w,2:2"
+                app:layout_constraintEnd_toStartOf="@+id/et_getCodeFour"
+                app:layout_constraintStart_toEndOf="@+id/et_getCodeTwo"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/et_getCodeFour"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/loginpin_background"
+                android:ems="10"
+                android:hint="*"
+                android:textColor="@color/white"
+                android:textColorHint="#B8B8B8"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="w,2:2"
+                app:layout_constraintEnd_toStartOf="@+id/et_getCodeFive"
+                app:layout_constraintStart_toEndOf="@+id/et_getCodeThree"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/et_getCodeFive"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/loginpin_background"
+                android:ems="10"
+                android:hint="*"
+                android:textColor="@color/white"
+                android:textColorHint="#B8B8B8"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="w,2:2"
+                app:layout_constraintEnd_toStartOf="@+id/et_getCodeSix"
+                app:layout_constraintStart_toEndOf="@+id/et_getCodeFour"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/et_getCodeSix"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/loginpin_background"
+                android:ems="10"
+                android:hint="*"
+                android:textColor="@color/white"
+                android:textColorHint="#B8B8B8"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="w,2:2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/et_getCodeFive"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_resendCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Didn't receive code?"
+            android:textAlignment="center"
+
+            android:textColor="@color/darkyellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CodeLayout" />
+
+        <TextView
+            android:id="@+id/btnResendCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="Resend Code"
+            android:textAllCaps="false"
+            android:textColor="@color/darkyellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_resendCode" />
+
+
+        <ImageView
+            android:id="@+id/btnVerifyOtp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/create"
+            android:text="Verify Now"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnResendCode" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

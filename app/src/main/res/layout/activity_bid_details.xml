@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context="com.webdoc.Fragments.bidding.BidDetailsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        tools:ignore="ScrollViewSize">
+
+        <TextView
+            android:id="@+id/tv_apartmntNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/appartment_no"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_mrla"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_mrla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/marla"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/clImages"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_apartmntNo" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clImages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_finish"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mrla">
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/ivLeftArrow"-->
+            <!--                android:layout_width="50dp"-->
+            <!--                android:layout_height="70dp"-->
+            <!--                android:src="@drawable/ic_arrow_left"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent" />-->
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/imageSlider"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:iss_auto_cycle="true"
+                app:iss_corner_radius="10"
+                app:iss_delay="0"
+                app:iss_error_image="@android:color/darker_gray"
+                app:iss_period="3000"
+                app:iss_placeholder="@android:color/darker_gray"
+                app:iss_selected_dot="@drawable/default_selected_dot"
+                app:iss_unselected_dot="@drawable/default_unselected_dot"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="180dp"-->
+            <!--                app:cardCornerRadius="10dp"-->
+            <!--                app:cardElevation="10dp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toStartOf="@+id/ivRightArrow"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/ivLeftArrow"-->
+            <!--                app:layout_constraintTop_toTopOf="parent">-->
+
+            <!--                <ImageView-->
+            <!--                    android:id="@+id/iv_propertyImg"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:scaleType="fitXY"-->
+            <!--                    app:layout_constraintBottom_toTopOf="@+id/textView10"-->
+            <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                    app:layout_constraintStart_toStartOf="parent"-->
+            <!--                    app:layout_constraintTop_toBottomOf="@+id/textView9" />-->
+            <!--            </androidx.cardview.widget.CardView>-->
+
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/ivRightArrow"-->
+            <!--                android:layout_width="50dp"-->
+            <!--                android:layout_height="70dp"-->
+            <!--                android:src="@drawable/ic_arrow_right"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/bidding_end"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/ll_timeLeft"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clImages" />
+
+        <TextView
+            android:id="@+id/tv_finish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/ll_timeLeft"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clImages" />
+
+        <LinearLayout
+            android:id="@+id/ll_timeLeft"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+            <TextView
+                android:id="@+id/tv_day"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/timer_back_shape"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/_23_24"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/dot1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/time_dot"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_hour"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/timer_back_shape"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/_23_24"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/dot2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/time_dot"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_min"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/timer_back_shape"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/_23_24"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/dot3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/time_dot"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_sec"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/timer_back_shape"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/_23_24"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_units"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_timeLeft">
+
+            <TextView
+                android:id="@+id/tv_dayUnit"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/days"
+                android:textColor="#AFA4A4" />
+
+            <TextView
+                android:id="@+id/dot4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/time_dot"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_hourUnit"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/hrs"
+                android:textColor="#AFA4A4" />
+
+            <TextView
+                android:id="@+id/dot5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/time_dot"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_minUnit"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/mins"
+                android:textColor="#AFA4A4" />
+
+            <TextView
+                android:id="@+id/dot6"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/time_dot"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_secUnit"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/sec"
+                android:textColor="#AFA4A4" />
+        </LinearLayout>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="32dp"
+            android:layout_marginTop="32dp"
+            android:background="#4A4A4A"
+            app:layoutDescription="@color/darkyellow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_units" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/starting_price"
+            android:textColor="@color/darkyellow"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/button3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/barChart" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/bid"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/button3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/barChart" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bid_btn_shape"
+            android:text="@string/bid_now"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

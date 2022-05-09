@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context="com.webdoc.Fragments.bidding.BiddingFragment">
+
+    <View
+        android:id="@+id/viewbid1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#616161"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_currentBid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="@string/current_bidding"
+        android:textColor="@color/darkyellow"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/viewbid5"
+        app:layout_constraintEnd_toStartOf="@+id/viewbid2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <View
+        android:id="@+id/viewbid3"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/darkyellow"
+        app:layout_constraintBottom_toTopOf="@+id/subFragmentContainer"
+        app:layout_constraintEnd_toStartOf="@+id/viewbid2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_currentBid" />
+    <View
+        android:id="@+id/viewbid2"
+        android:layout_width="1dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/white"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/viewbid5"
+        app:layout_constraintEnd_toStartOf="@+id/tv_upcomingBid"
+        app:layout_constraintStart_toEndOf="@+id/tv_currentBid"
+        app:layout_constraintTop_toBottomOf="@+id/viewbid1" />
+
+    <TextView
+        android:id="@+id/tv_upcomingBid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="@string/upcoming_bidding"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/viewbid5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/viewbid2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <View
+        android:id="@+id/viewbid4"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+
+        android:background="@color/darkyellow"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/subFragmentContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/viewbid2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_upcomingBid" />
+
+
+    <View
+        android:id="@+id/viewbid5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="#616161"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_currentBid" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/subFragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewbid5">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "732071844449",
+    "project_id": "the-forum-30ac5",
+    "storage_bucket": "the-forum-30ac5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732071844449:android:c30b9de51608472346a820",
+        "android_client_info": {
+          "package_name": "com.webdoc.theforum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732071844449-i060tsvg7a579qvtc1o22o9hi16v5brm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.webdoc.theforum",
+            "certificate_hash": "2d2255b364d5e28f5989d3288430a2d3d8c5ad91"
+          }
+        },
+        {
+          "client_id": "732071844449-ef30oc9fj9g0d2b2f6pmoipm2nbg4ea5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZEnpQXZ8yIuxSXGGw5Qm5i-J99yC7fUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732071844449-ef30oc9fj9g0d2b2f6pmoipm2nbg4ea5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
