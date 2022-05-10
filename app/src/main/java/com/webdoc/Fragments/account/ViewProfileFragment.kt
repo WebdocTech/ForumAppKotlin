@@ -29,12 +29,13 @@ class ViewProfileFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(name: String, email: String): ViewProfileFragment {
+        fun newInstance(name: String, email: String, phoneNum: String,profileImage:String): ViewProfileFragment {
             val fragment = ViewProfileFragment()
             val args = Bundle()
             args.putString("name", name)
-            // args.putString("profileImage", profileImage)
+             args.putString("profileImage",profileImage)
             args.putString("email", email)
+            args.putString("phone", phoneNum)
             fragment.arguments = args
             return fragment
         }
@@ -51,17 +52,19 @@ class ViewProfileFragment : Fragment() {
         if (args != null) {
             name = args.getString("name").toString()
             email = args.getString("email").toString()
-            //  image = args.getString("profileImage").toString()
+            phoneNo = args.getString("phone").toString()
+              image = args.getString("profileImage").toString()
             binding.tvProfileName.setText(name)
-            //  Picasso.get().load(image).into(binding.ivShowprofile)
+              Picasso.get().load(image).into(binding.ivShowprofile)
             binding.tvEmail.setText(email)
-        }
-        prefs = (activity as MainActivity).getSharedPreferences("abc", Context.MODE_PRIVATE)
-        edit = prefs!!.edit()
-        phoneNo = prefs!!.getString("phoneNo", "").toString()
-        if (!phoneNo.equals("")) {
             binding.tvNumber.setText(phoneNo)
         }
+//        prefs = (activity as MainActivity).getSharedPreferences("abc", Context.MODE_PRIVATE)
+//        edit = prefs!!.edit()
+//        phoneNo = prefs!!.getString("phoneNo", "").toString()
+//        if (!phoneNo.equals("")) {
+//            binding.tvNumber.setText(phoneNo)
+//        }
         return binding.root
     }
 

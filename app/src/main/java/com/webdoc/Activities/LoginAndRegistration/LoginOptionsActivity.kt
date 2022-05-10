@@ -10,7 +10,6 @@ import android.util.Log
 import android.webkit.MimeTypeMap
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.facebook.*
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -65,11 +64,10 @@ class LoginOptionsActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.btnContGoogle.setOnClickListener {
-            signIn();
-
-            Global.utils!!.showCustomLoadingDialog(this@LoginOptionsActivity)
-
-
+            val intent = Intent(this, GetNumberActivity::class.java)
+            startActivity(intent)
+//            signIn();
+//            Global.utils!!.showCustomLoadingDialog(this@LoginOptionsActivity)
         }
 
         binding.clLogin.setOnClickListener {
@@ -95,7 +93,7 @@ class LoginOptionsActivity : AppCompatActivity() {
         //firebaseAuth = Firebase.auth
         prefs = getSharedPreferences(prefrenceKey, Context.MODE_PRIVATE)
         edit = prefs.edit()
-        checkUser()
+      //  checkUser()
 
     }
 
@@ -202,48 +200,7 @@ class LoginOptionsActivity : AppCompatActivity() {
         }
     }
 
-    //    private fun uploadDatawithImage() {
-//        // storageReference = FirebaseStorage.getInstance().getReference("uploads")
-//
-////            String extension = getFileExtension(imageUriforStorage);
-//
-////            String extension = getFileExtension(imageUriforStorage);
-//        if (profileImage != null) {
-//
-////            String extension = getFileExtension(imageUriforStorage);
-//            val fileReference = storageReference!!.child(
-//                System.currentTimeMillis().toString() + getFileExtension(profileImage!!)
-//            )
-//            fileReference.putFile(profileImage!!).addOnSuccessListener { taskSnapshot ->
-//                val result = taskSnapshot.metadata!!
-//                    .reference!!.downloadUrl
-//                result.addOnSuccessListener { uri ->
-//                    val employee = UserModel(
-//                        email, uid, name, profileImage!!
-//                    )
-//                    val reference =
-//                        FirebaseDatabase.getInstance().reference.child("UserData")
-//                    reference.push().setValue(employee).addOnSuccessListener {
-//                        Toast.makeText(
-//                            this@LoginOptionsActivity,
-//                            "dataAddedSuccesfully",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-//                    }
-//                        .addOnFailureListener { e -> Log.i("sdfdf", e.message!!) }
-//                    // pd.dismiss();
-//                }
-//            }.addOnFailureListener { e ->
-////                pd!!.dismiss()
-////                Toast.makeText(getActivity(), e.message, Toast.LENGTH_SHORT).show()
-//            }.addOnProgressListener { snapshot ->
-////                val progressPercent = 100.00 * snapshot.bytesTransferred / snapshot.totalByteCount
-////                pd!!.setMessage("Progress" + progressPercent.toInt() + "%")
-//            }
-//
-//
-//        }
-//    }
+
     private fun uploadData() {
         val userModel = UserModel(email, uid, name)
 
