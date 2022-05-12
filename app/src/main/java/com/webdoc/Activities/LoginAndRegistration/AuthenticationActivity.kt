@@ -21,7 +21,7 @@ class AuthenticationActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     var phoneNo: String? = null
     var otp_received: String? = null
-    private  var firebaseAuth: FirebaseAuth?=null
+    private var firebaseAuth: FirebaseAuth? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViews()
@@ -78,37 +78,8 @@ class AuthenticationActivity : AppCompatActivity() {
                     Toast.makeText(
                         this@AuthenticationActivity,
                         "Verification Successful..",
-                        Toast.LENGTH_SHORT)
-//                                startActivity(
-//                            Intent(
-//                                this@AuthenticationActivity,
-//                               LoginActivity::class.java
-//                           )
-//                       )
-//                                                    Intent intent = new Intent(OTPVerificationActivity.this, GetUserDataActivity.class);
-//                                intent.putExtra("phoneNo", phoneNo);
-//                               startActivity(intent);
-//                       finishAffinity()
-//                    ).show()
-//                    if (Preferences.getInstance(applicationContext).getKeyIsRegister()) {
-//                        Preferences.getInstance(applicationContext).setKeyIsLogin(true)
-//                        startActivity(
-//                            Intent(
-//                                this@AuthenticationActivity,
-//                                LoginActivity::class.java
-//                            )
-//                        )
-//                        //                                Intent intent = new Intent(OTPVerificationActivity.this, GetUserDataActivity.class);
-////                                intent.putExtra("phoneNo", phoneNo);
-////                                startActivity(intent);
-//                        finishAffinity()
-//                    } else {
-//                        val intent =
-//                            Intent(this@AuthenticationActivity, LoginOptionsActivity::class.java)
-//                        intent.putExtra("phoneNo", phoneNo)
-//                        startActivity(intent)
-//                        finish()
-//                    }
+                        Toast.LENGTH_SHORT
+                    )
                 } else {
                     Global.utils!!.hideCustomLoadingDialog()
                     Toast.makeText(
@@ -120,23 +91,14 @@ class AuthenticationActivity : AppCompatActivity() {
             }
     }
 
-    private fun verifyCode(code: String) {
-        val credential = PhoneAuthProvider.getCredential(otp_received!!, code)
-        signInWithCredential(credential)
-    }
 
-    // callback method is called on Phone auth provider.
     private val mCallBack: OnVerificationStateChangedCallbacks =
         object : OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
-                val code = phoneAuthCredential.smsCode
-                if (code != null) {
-                    verifyCode(code)
-                }
+                signInWithCredential(phoneAuthCredential)
             }
 
             override fun onVerificationFailed(e: FirebaseException) {
-                // displaying error message with firebase exception.
                 Global.utils!!.hideCustomLoadingDialog()
                 Toast.makeText(this@AuthenticationActivity, e.message, Toast.LENGTH_LONG).show()
             }

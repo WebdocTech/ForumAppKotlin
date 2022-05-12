@@ -2,12 +2,12 @@ package com.webdoc.Fragments.home
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Build
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -32,16 +32,13 @@ import com.webdoc.Adapters.PriceCategoriesAdapter
 import com.webdoc.Essentials.PreferencesNew
 import com.webdoc.ModelClasses.MarlaCategories
 import com.webdoc.ModelClasses.PriceCategories
-import com.webdoc.Payment.PaymentMethodsActivity
 import com.webdoc.theforum.databinding.FragmentHomeBinding
 import java.util.*
 
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var editt: SharedPreferences.Editor
-    private lateinit var prefs: SharedPreferences
-    var preferences: PreferencesNew? = null
+
     var check = 1
     var city = ""
     var arrayOfCities = arrayOf(
@@ -85,7 +82,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        preferences = PreferencesNew(activity as MainActivity)
         initViews()
         clickListeners()
         return binding.root
@@ -98,10 +94,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun initViews() {
-        prefs = (activity as MainActivity).getSharedPreferences("abc", Context.MODE_PRIVATE)
-        edit = prefs.edit()
-        userid = prefs.getString("id", "").toString()
-        readData(userid)
         pricePopulateRecycler()
         marlaPopulateRecycler()
         hotSellingPopulateRecycler()
@@ -120,24 +112,7 @@ class HomeFragment : Fragment() {
             binding.view2.visibility = View.VISIBLE
         }
 
-        binding.ivPayment.setOnClickListener {
-
-            startActivity(Intent(activity as MainActivity, PaymentMethodsActivity::class.java))
-
-        }
-
         binding.clAppartment.setOnClickListener {
-            //    PreferencesNew.getInstance(applicationContext).kEY_ApplicationUserId == "jadoon"
-
-            edit.putString(PreferencesNew.KEY_ApplicationUserId, "jadoon");
-            edit.commit();
-            val useridss = prefs.getString(PreferencesNew.KEY_ApplicationUserId, "").toString()
-            Log.i(
-                "temp",
-                useridss + ""
-            )
-
-
             binding.view5.visibility = View.VISIBLE
             binding.view6.visibility = View.GONE
             binding.view7.visibility = View.GONE
@@ -236,7 +211,7 @@ class HomeFragment : Fragment() {
         this.setCompoundDrawables(drawable, null, null, null)
     }
 
-    private fun readData(id: String) {
+   /* private fun readData(id: String) {
         databaseReference = FirebaseDatabase.getInstance().getReference("user")
         databaseReference!!.child(id).get()
             .addOnCompleteListener(object : OnCompleteListener<DataSnapshot?> {
@@ -272,7 +247,7 @@ class HomeFragment : Fragment() {
                     }
                 }
             })
-    }
+    }*/
 }
 
 

@@ -1,22 +1,30 @@
 package com.webdoc.Activities.LoginAndRegistration
 
 import android.Manifest.permission
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.view.Gravity
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import com.tangxiaolv.telegramgallery.GalleryActivity
 import com.tangxiaolv.telegramgallery.GalleryConfig
 import com.webdoc.Activities.LoginAndRegistration.ViewModels.RegistrationViewModel
 import com.webdoc.Activities.MainActivity
 import com.webdoc.Essentials.Global
+import com.webdoc.Essentials.PreferencesNew
 import com.webdoc.theforum.databinding.ActivityRegistrationBinding
 import java.io.File
 
@@ -36,8 +44,8 @@ class RegistrationActivity : AppCompatActivity() {
     var userPin: String? = null
     var userConfirmPin: String? = null
     var registrationViewModel: RegistrationViewModel? = null
-    lateinit var prefs: SharedPreferences
-    lateinit var edit: SharedPreferences.Editor
+    private lateinit var prefs: SharedPreferences
+    private lateinit var edit: SharedPreferences.Editor
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -52,30 +60,35 @@ class RegistrationActivity : AppCompatActivity() {
                 if (response.result!!.responseCode.equals("0000")) {
                     Toast.makeText(this@RegistrationActivity, "Customer Added", Toast.LENGTH_SHORT)
                         .show()
-//                    edit.putString("id", uid)
-//                    edit.commit()
-//                    edit.apply()
-//                    Preferences.getInstance(applicationContext).setKeyIsRegister(true)
-//                    Preferences.getInstance(applicationContext).setKeyIsLogin(true)
-//                    Preferences.getInstance(applicationContext).setKeyUserName(name)
-//                    Preferences.getInstance(applicationContext).setKeyUserPhone(phoneNo)
-//                    Preferences.getInstance(applicationContext).setKEY_USER_Address(homeAddress)
-//                    Preferences.getInstance(applicationContext).setKEY_USER_City(city)
+                    edit.putBoolean(PreferencesNew.KEY_IS_LOGIN, true)
+                    Log.i("sdsd", prefs.getBoolean(PreferencesNew.KEY_IS_LOGIN, true).toString())
+                    edit.putBoolean(PreferencesNew.KEY_IS_Register, true)
+                    edit.putString(PreferencesNew.KEY_USER_NAME, userName)
+                    edit.putString(PreferencesNew.KEY_USER_PHONE, phoneNo)
+                    edit.putString(PreferencesNew.KEY_USER_EMAIL, userEmail)
+                    edit.putString(PreferencesNew.KEY_USER_IMAGE, imageLink)
+                    edit.commit()
+                    edit.apply()
+
                     Global.utils!!.hideCustomLoadingDialog()
                     startActivity(Intent(this@RegistrationActivity, MainActivity::class.java))
                     finishAffinity()
                 } else {
-//                    Preferences.getInstance(applicationContext).setKeyIsLogin(true)
-//                    //  Preferences.getInstance(getApplicationContext()).setKeyIsRegister(true);
-//                    Preferences.getInstance(applicationContext).setKeyUserName(name)
+
                     Global.utils!!.hideCustomLoadingDialog()
-                    Toast.makeText(this, "Customer Already added", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@RegistrationActivity, MainActivity::class.java))
+                    Toast.makeText(this, "Number Already Registered!", Toast.LENGTH_SHORT).show()
+                    startActivity(
+                        Intent(
+                            this@RegistrationActivity,
+                            AuthenticationActivity::class.java
+                        )
+                    )
                     finishAffinity()
                 }
             }
         }
     }
+
 
     private fun clickListerners() {
         binding.ivCreate.setOnClickListener {
@@ -84,7 +97,6 @@ class RegistrationActivity : AppCompatActivity() {
             userType = "Mobile"
             userPin = binding.edPassword.getText().toString()
             userConfirmPin = binding.edConfirmPassword.getText().toString()
-            phoneNo = "03055178347"
             //  deviceToken = FirebaseInstanceId.getInstance().getToken()
             val strPass1: String = binding.edPassword.getText().toString()
             val strPass2: String = binding.edConfirmPassword.getText().toString()
@@ -99,16 +111,17 @@ class RegistrationActivity : AppCompatActivity() {
             } else if (strPass1 != strPass2) {
                 Toast.makeText(this@RegistrationActivity, "Pin not same!", Toast.LENGTH_SHORT)
                     .show()
+            } else if (imageLink == null) {
+                Toast.makeText(this@RegistrationActivity, "Add Photo!", Toast.LENGTH_SHORT).show()
             } else {
-                registrationViewModel!!.calRegisterUser(
+                registrationViewModel!!.calRegisterUserMobile(
                     userName, userEmail, phoneNo, userType, userPin,
                     Uri.parse(imageLink)
                 )
                 Global.utils!!.showCustomLoadingDialog(this@RegistrationActivity)
 
             }
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
+
         }
         binding.btnAddPhoto.setOnClickListener {
             try {
@@ -131,7 +144,6 @@ class RegistrationActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-            //  openGallery()
         }
     }
 
@@ -139,24 +151,16 @@ class RegistrationActivity : AppCompatActivity() {
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-//        prefs = getSharedPreferences("abc", Context.MODE_PRIVATE)
-//        edit = prefs.edit()
+        prefs = getSharedPreferences("abc", Context.MODE_PRIVATE)
+        edit = prefs.edit()
+        val intent = intent
         phoneNo = intent.getStringExtra("phoneNo")
 
         registrationViewModel = ViewModelProvider(this).get(RegistrationViewModel::class.java)
     }
 
     private fun openGallery() {
-//        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-//        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-//        intent.setType("image/*");
-//
-//        startActivityForResult(Intent.createChooser(intent, "Add profile picture"), GALLERY_REQUEST_CODE);
         fileType = "image"
-
-        //open album
-
-        //open album
         val config = GalleryConfig.Build()
             .singlePhoto(true)
             .build()
@@ -183,20 +187,5 @@ class RegistrationActivity : AppCompatActivity() {
             }
             return
         }
-//        if (requestCode == GALLERY_REQUEST_CODE && resultCode == RESULT_OK) {
-//
-//            if (data.getData() != null) {
-//                uri = data.getData();
-//
-//                Picasso.get().load(uri)
-//                        .into(binding.ivUser);
-////                uri = Uri.fromFile(new File(String.valueOf(data.getData())));
-////                file = new File(uri.getPath());
-////                uriFile = String.valueOf(file);
-//            } else {
-//                Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show();
-//            }
-//
-//        }
     }
 }

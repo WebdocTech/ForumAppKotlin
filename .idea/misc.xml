@@ -42,7 +42,14 @@
         <entry key="..\:/Najeeb Data/WebDoc Workspace/TheForum/app/src/main/res/layout/model_upcoming_bidding.xml" value="0.1921875" />
         <entry key="..\:/Najeeb Data/WebDoc Workspace/TheForum/app/src/main/res/layout/progressbar.xml" value="0.15" />
         <entry key="..\:/Najeeb Data/WebDoc Workspace/TheForum/app/src/main/res/layout/spinner_item.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_authentication.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_get_number.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_login.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_registration.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_welcome.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_account.xml" value="0.1" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_home.xml" value="0.1765625" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_view_profile.xml" value="0.1" />
       </map>
     </option>
   </component>

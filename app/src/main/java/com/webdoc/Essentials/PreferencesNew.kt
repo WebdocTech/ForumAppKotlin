@@ -7,6 +7,8 @@ import android.content.SharedPreferences
 class PreferencesNew(var ctx: Context) {
     var prefs: SharedPreferences
     var editor: SharedPreferences.Editor
+
+
     fun clearSharedPreferences() {
         editor.clear()
         editor.commit()
@@ -90,12 +92,12 @@ class PreferencesNew(var ctx: Context) {
         }
     var kEY_USER_City: String?
         get() = prefs.getString(
-            PreferencesNew.Companion.KEY_USER_City,
+            PreferencesNew.Companion.KEY_USER_IMAGE,
             ""
         )
         set(city) {
             editor.putString(
-                PreferencesNew.Companion.KEY_USER_City,
+                PreferencesNew.Companion.KEY_USER_IMAGE,
                 city
             )
             editor.commit()
@@ -123,28 +125,28 @@ class PreferencesNew(var ctx: Context) {
         }
     var kEY_USER_Address: String?
         get() = prefs.getString(
-            PreferencesNew.Companion.KEY_USER_Address,
+            PreferencesNew.Companion.KEY_USER_Balance,
             ""
         )
         set(address) {
             editor.putString(
-                PreferencesNew.Companion.KEY_USER_Address,
+                PreferencesNew.Companion.KEY_USER_Balance,
                 address
             )
             editor.commit()
         }
 
     companion object {
-        private const val KEY_IS_LOGIN = "isLogin"
-        private const val KEY_IS_Register = "isRegister"
+        const val KEY_IS_LOGIN = "isLogin"
+        const val KEY_IS_Register = "isRegister"
         private const val KEY_IS_FirstTime = "isFirstTime"
-        private const val KEY_USER_EMAIL = "userEmail"
+        const val KEY_USER_EMAIL = "userEmail"
         private const val KEY_USER_Pin = "userPin"
         const val KEY_ApplicationUserId = "applicationUserId"
-        private const val KEY_USER_NAME = "userName"
-        private const val KEY_USER_PHONE = "userPhone"
-        private const val KEY_USER_City = "userCity"
-        private const val KEY_USER_Address = "userAddress"
+        const val KEY_USER_NAME = "userName"
+        const val KEY_USER_PHONE = "userPhone"
+        const val KEY_USER_IMAGE = "userImage"
+        const val KEY_USER_Balance = "userBal"
         var mPref: PreferencesNew? = null
         fun getInstance(mContext: Context?): PreferencesNew {
             if (PreferencesNew.Companion.mPref == null) {
