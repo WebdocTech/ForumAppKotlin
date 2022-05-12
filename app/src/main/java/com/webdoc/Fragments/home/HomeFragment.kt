@@ -1,37 +1,30 @@
 package com.webdoc.Fragments.home
 
 import android.annotation.SuppressLint
-import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Build
 import android.os.Bundle
-import android.preference.PreferenceManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
-import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.webdoc.Activities.MainActivity
 import com.webdoc.Adapters.CurrentBiddingAdapter
 import com.webdoc.Adapters.MarlaCategoriesAdapter
 import com.webdoc.Adapters.PriceCategoriesAdapter
-import com.webdoc.Essentials.PreferencesNew
 import com.webdoc.ModelClasses.MarlaCategories
 import com.webdoc.ModelClasses.PriceCategories
+import com.webdoc.Payment.PaymentMethodsActivity
 import com.webdoc.theforum.databinding.FragmentHomeBinding
 import java.util.*
 
@@ -102,6 +95,13 @@ class HomeFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("ResourceAsColor")
     private fun clickListeners() {
+
+        binding.ivPayment.setOnClickListener {
+            val intent = Intent(activity as MainActivity, PaymentMethodsActivity::class.java)
+            startActivity(intent)
+
+
+        }
         binding.tvForSale.setOnClickListener {
             binding.view1.visibility = View.VISIBLE
             binding.view2.visibility = View.GONE
@@ -211,43 +211,43 @@ class HomeFragment : Fragment() {
         this.setCompoundDrawables(drawable, null, null, null)
     }
 
-   /* private fun readData(id: String) {
-        databaseReference = FirebaseDatabase.getInstance().getReference("user")
-        databaseReference!!.child(id).get()
-            .addOnCompleteListener(object : OnCompleteListener<DataSnapshot?> {
-                override fun onComplete(task: Task<DataSnapshot?>) {
-                    if (task.isSuccessful()) {
-                        if (task.getResult()!!.exists()) {
-                            // Toast.makeText(activity as AppCompatActivity, "Successfull", Toast.LENGTH_SHORT).show()
-                            val dataSnapshot: DataSnapshot = task.getResult()!!
-                            username = dataSnapshot.child("name").value.toString()
-                            useremail = dataSnapshot.child("email").value.toString()
-                            edit.putString("name", username)
-                            edit.putString("email", useremail)
-                            edit.commit()
-                            edit.apply()
+    /* private fun readData(id: String) {
+         databaseReference = FirebaseDatabase.getInstance().getReference("user")
+         databaseReference!!.child(id).get()
+             .addOnCompleteListener(object : OnCompleteListener<DataSnapshot?> {
+                 override fun onComplete(task: Task<DataSnapshot?>) {
+                     if (task.isSuccessful()) {
+                         if (task.getResult()!!.exists()) {
+                             // Toast.makeText(activity as AppCompatActivity, "Successfull", Toast.LENGTH_SHORT).show()
+                             val dataSnapshot: DataSnapshot = task.getResult()!!
+                             username = dataSnapshot.child("name").value.toString()
+                             useremail = dataSnapshot.child("email").value.toString()
+                             edit.putString("name", username)
+                             edit.putString("email", useremail)
+                             edit.commit()
+                             edit.apply()
 
-                            //  binding.tvUserName.setText(username)
-                            //  binding.tvViewProfile.setText(email)
-                        } else {
-                            Toast.makeText(
-                                activity as MainActivity,
-                                "User Doesn't Exist",
-                                Toast.LENGTH_SHORT
-                            )
-                                .show()
+                             //  binding.tvUserName.setText(username)
+                             //  binding.tvViewProfile.setText(email)
+                         } else {
+                             Toast.makeText(
+                                 activity as MainActivity,
+                                 "User Doesn't Exist",
+                                 Toast.LENGTH_SHORT
+                             )
+                                 .show()
 
-                        }
-                    } else {
-                        Toast.makeText(
-                            activity as MainActivity,
-                            "Failed to read",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-            })
-    }*/
+                         }
+                     } else {
+                         Toast.makeText(
+                             activity as MainActivity,
+                             "Failed to read",
+                             Toast.LENGTH_SHORT
+                         ).show()
+                     }
+                 }
+             })
+     }*/
 }
 
 

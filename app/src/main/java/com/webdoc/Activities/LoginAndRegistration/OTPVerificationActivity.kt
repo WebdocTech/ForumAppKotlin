@@ -8,7 +8,6 @@ import android.text.TextWatcher
 import android.view.KeyEvent
 import android.view.View
 import android.widget.EditText
-import com.webdoc.theforum.R
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.FirebaseException
@@ -16,6 +15,7 @@ import com.google.firebase.auth.*
 import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
 import com.webdoc.Essentials.Global
+import com.webdoc.theforum.R
 import com.webdoc.theforum.databinding.ActivityOtpverificationBinding
 import java.util.concurrent.TimeUnit
 

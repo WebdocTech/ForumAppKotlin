@@ -4,11 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -25,10 +25,8 @@ import com.webdoc.Activities.LoginAndRegistration.ViewModels.RegistrationViewMod
 import com.webdoc.Activities.MainActivity
 import com.webdoc.Essentials.Global
 import com.webdoc.Essentials.PreferencesNew
-import com.webdoc.ModelClasses.UserModel
 import com.webdoc.theforum.R
 import com.webdoc.theforum.databinding.ActivityGetNumberBinding
-import com.webdoc.theforum.databinding.ActivityLoginOptionsBinding
 import java.io.File
 
 class GetNumberActivity : AppCompatActivity() {
@@ -229,6 +227,7 @@ class GetNumberActivity : AppCompatActivity() {
                 val account = task.getResult(ApiException::class.java)
                 updateUI(account)
             } catch (e: Exception) {
+                Log.i("dsd", e.toString())
             }
         }
     }
