@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.View
+import com.google.android.material.snackbar.Snackbar
 import com.webdoc.theforum.R
 
 class Utils {
@@ -61,4 +62,17 @@ class Utils {
         alertDialog!!.dismiss()
         isShowingCustomProgress = false
     }
+
+    fun showSuccessSnakeBar(activity: Activity, msg: String?) {
+        val snackbar = Snackbar.make(
+            activity.findViewById(android.R.id.content),
+            msg!!, Snackbar.LENGTH_LONG
+        )
+            .setAction("Action", null)
+            .setActionTextColor(activity.resources.getColor(R.color.white))
+        val sbView = snackbar.view
+        sbView.setBackgroundColor(activity.resources.getColor(R.color.black))
+        snackbar.show()
+    }
+
 }
