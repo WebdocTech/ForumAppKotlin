@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
-import com.webdoc.Activities.MainActivity
-import com.webdoc.Fragments.bidding.BidDetailsActivity
 import com.webdoc.Fragments.home.PropertyDetailActivity
 import com.webdoc.theforum.R
 

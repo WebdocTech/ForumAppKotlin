@@ -1,4 +1,4 @@
-package com.webdoc.Fragments.bidding
+package com.webdoc.Fragments.video
 
 import android.graphics.Color
 import android.os.Bundle
@@ -8,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
+import com.webdoc.Fragments.home.FullPaymentFragment
+import com.webdoc.Fragments.home.InstallmentPlanFragment
 import com.webdoc.theforum.R
-import com.webdoc.theforum.databinding.FragmentBiddingBinding
+import com.webdoc.theforum.databinding.FragmentVideoBinding
 
 
-class BiddingFragment : Fragment() {
-    private lateinit var binding: FragmentBiddingBinding
+class VideoFragment : Fragment() {
+    private lateinit var binding: FragmentVideoBinding
     private lateinit var biddingFragmentManager: FragmentManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +27,7 @@ class BiddingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentBiddingBinding.inflate(inflater, container, false)
+        binding = FragmentVideoBinding.inflate(inflater, container, false)
         initViews()
         clickListeners()
         return binding.root
@@ -33,7 +35,7 @@ class BiddingFragment : Fragment() {
 
     private fun clickListeners() {
         binding.tvCurrentBid.setOnClickListener {
-            loadFragment(CurrentBiddingFragment())
+            loadFragment(FullPaymentFragment())
             binding.viewbid3.visibility = View.VISIBLE
             binding.viewbid4.visibility = View.GONE
 
@@ -42,7 +44,7 @@ class BiddingFragment : Fragment() {
 
         }
         binding.tvUpcomingBid.setOnClickListener {
-            loadFragment(UpcomingBiddingFragment())
+            loadFragment(InstallmentPlanFragment())
             binding.viewbid3.visibility = View.GONE
             binding.viewbid4.visibility = View.VISIBLE
 
@@ -53,13 +55,13 @@ class BiddingFragment : Fragment() {
 
     private fun initViews() {
         biddingFragmentManager = (activity as AppCompatActivity).supportFragmentManager
-        loadFragment(CurrentBiddingFragment())
+        loadFragment(FullPaymentFragment())
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.title = "Bidding"
+        (activity as AppCompatActivity).supportActionBar?.title = "Video"
     }
 
     private fun loadFragment(fragment: Fragment) {

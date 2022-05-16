@@ -7,10 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import com.webdoc.Adapters.HotSellingAdapter
 import com.webdoc.Adapters.ProjectsAdapter
-import com.webdoc.theforum.R
-import com.webdoc.theforum.databinding.FragmentHomeBinding
 import com.webdoc.theforum.databinding.FragmentProjectsBinding
 
 

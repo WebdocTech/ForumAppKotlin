@@ -29,7 +29,7 @@ class PropertySubCatAdapter(var mContext: Context, var arrayList: ArrayList<Prop
 
         holder.itemView.setOnClickListener {
 
-            //  expertiesList.add(arrayList[position].getTitle())
+            //  expertiesList.questionanswer(arrayList[position].getTitle())
             if (holder.cl_propSubCat.getBackground()
                     .getConstantState() === mContext.resources.getDrawable(R.drawable.bg_selected_border).constantState
             ){

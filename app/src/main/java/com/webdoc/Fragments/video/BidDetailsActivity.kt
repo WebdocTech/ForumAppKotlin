@@ -1,10 +1,8 @@
-package com.webdoc.Fragments.bidding
+package com.webdoc.Fragments.video
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -22,7 +20,6 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import com.webdoc.ModelClasses.Score
 import com.webdoc.theforum.R
 import com.webdoc.theforum.databinding.ActivityBidDetailsBinding
-import com.webdoc.theforum.databinding.ActivityPropertyDetailBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -196,7 +193,7 @@ class BidDetailsActivity : AppCompatActivity() {
         binding.barChart.description.isEnabled = false
 
 
-        //add animation
+        //questionanswer animation
         binding.barChart.animateY(3000)
 
         // to draw label on xAxis

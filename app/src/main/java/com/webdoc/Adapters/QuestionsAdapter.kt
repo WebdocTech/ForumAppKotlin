@@ -6,34 +6,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.webdoc.Fragments.home.PropertyDetailActivity
 import com.webdoc.theforum.R
 
-class HotSellingAdapter(var context: Context) :
-    RecyclerView.Adapter<HotSellingAdapter.MyViewHolder>() {
+
+class QuestionsAdapter(var context: Context) :
+    RecyclerView.Adapter<QuestionsAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.model_hotselling_items, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.model_questions, parent, false)
         return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.itemView.setOnClickListener {
-//                    val bundle = Bundle()
-//                    bundle.putString(Global.APARTMENT_ID_KEY, id!!)
-//                    val internetWazifaDetailsFragment = PropertyDetailFragment.newInstance()
-//                    internetWazifaDetailsFragment.arguments = bundle
-            val intent = Intent(context, PropertyDetailActivity::class.java)
-            context.startActivity(intent)
-
-
+//            val intent = Intent(context, PropertyDetailActivity::class.java)
+//            context.startActivity(intent)
         }
     }
 
     override fun getItemCount(): Int {
-        return 5
+        return 4
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

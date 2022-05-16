@@ -15,8 +15,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.navigation.NavigationBarView
 import com.webdoc.Fragments.account.AccountFragment
-import com.webdoc.Fragments.add.AddFragment
-import com.webdoc.Fragments.bidding.BiddingFragment
+import com.webdoc.Fragments.questionanswer.QAFragment
+import com.webdoc.Fragments.video.VideoFragment
 import com.webdoc.Fragments.home.HomeFragment
 import com.webdoc.Fragments.projects.ProjectsFragment
 import com.webdoc.theforum.R
@@ -47,12 +47,12 @@ class MainActivity : AppCompatActivity() {
                 loadFragment(HomeFragment())
                 return@OnItemSelectedListener true
             }
-            R.id.nav_bidding -> {
-                loadFragment(BiddingFragment())
+            R.id.nav_video -> {
+                loadFragment(VideoFragment())
                 return@OnItemSelectedListener true
             }
-            R.id.nav_add -> {
-                loadFragment(AddFragment())
+            R.id.nav_quesans -> {
+                loadFragment(QAFragment())
                 return@OnItemSelectedListener true
             }
             R.id.nav_projects -> {
@@ -91,11 +91,11 @@ class MainActivity : AppCompatActivity() {
                 return@addOnBackStackChangedListener
             }
             Log.e("TAG", "onCreate: " + bse!!.name)
-            if (bse!!.name == BiddingFragment::class.java.name) {
+            if (bse!!.name == VideoFragment::class.java.name) {
                 binding.bottomNavigatinView.menu.getItem(1)?.isChecked = true
             } else if (bse!!.name == HomeFragment::class.java.name) {
                 binding.bottomNavigatinView.menu.getItem(0)?.isChecked = true
-            } else if (bse!!.name == AddFragment::class.java.name) {
+            } else if (bse!!.name == QAFragment::class.java.name) {
                 binding.bottomNavigatinView.menu.getItem(2)?.isChecked = true
             } else if (bse!!.name == ProjectsFragment::class.java.name) {
                 binding.bottomNavigatinView.menu.getItem(3)?.isChecked = true
@@ -160,11 +160,11 @@ class MainActivity : AppCompatActivity() {
 
     fun selectBottomNavIcon(bse: String?) {
         if (bse != null && binding.bottomNavigatinView != null) {
-            if (bse == BiddingFragment::class.java.getName()) {
+            if (bse == VideoFragment::class.java.getName()) {
                 binding.bottomNavigatinView.getMenu().getItem(1).setChecked(true)
             } else if (bse == HomeFragment::class.java.name) {
                 binding.bottomNavigatinView.getMenu().getItem(0).setChecked(true)
-            } else if (bse == AddFragment::class.java.getName()) {
+            } else if (bse == QAFragment::class.java.getName()) {
                 binding.bottomNavigatinView.getMenu().getItem(2).setChecked(true)
             } else if (bse == ProjectsFragment::class.java.getName()) {
                 binding.bottomNavigatinView.getMenu().getItem(3).setChecked(true)

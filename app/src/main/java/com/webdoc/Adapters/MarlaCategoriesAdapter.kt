@@ -28,7 +28,7 @@ class MarlaCategoriesAdapter(var mContext: Context, var arrayList: ArrayList<Mar
         holder.btn_marlaTitle.text = arrayList[position].marlatitle
         holder.itemView.setOnClickListener {
 
-            //  expertiesList.add(arrayList[position].getTitle())
+            //  expertiesList.questionanswer(arrayList[position].getTitle())
             if (holder.cl_marlaCat.getBackground()
                     .getConstantState() === mContext.resources.getDrawable(R.drawable.bg_selected_border).constantState
             ){

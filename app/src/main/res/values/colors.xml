@@ -19,4 +19,7 @@
     <color name="lightergrayColor">#E0E0E0</color>
     <color name="red">@android:color/holo_red_dark</color>
 
+
+    <color name="color_60">#F4A460</color>
+
 </resources>

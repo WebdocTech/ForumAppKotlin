@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/biddingFragment"
-        android:name="com.webdoc.Fragments.bidding.BiddingFragment"
+        android:name="com.webdoc.Fragments.video.VideoFragment"
         android:label="Bidding"
-        tools:layout="@layout/fragment_bidding" />
+        tools:layout="@layout/fragment_video" />
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.webdoc.Fragments.add.AddFragment"
+        android:name="com.webdoc.Fragments.questionanswer.QAFragment"
         android:label="Add"
-        tools:layout="@layout/fragment_add" />
+        tools:layout="@layout/fragment_qa" />
     <fragment
         android:id="@+id/projectsFragment"
         android:name="com.webdoc.Fragments.projects.ProjectsFragment"

@@ -4,34 +4,33 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
-import android.graphics.PorterDuff
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.annotation.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DatabaseReference
 import com.webdoc.Activities.MainActivity
-import com.webdoc.Adapters.CurrentBiddingAdapter
+import com.webdoc.Adapters.GetPropertiesAdapter
 import com.webdoc.Adapters.MarlaCategoriesAdapter
 import com.webdoc.Adapters.PriceCategoriesAdapter
+import com.webdoc.Essentials.Global
+import com.webdoc.Fragments.home.ViewModels.GetPropertiesViewModel
 import com.webdoc.ModelClasses.MarlaCategories
 import com.webdoc.ModelClasses.PriceCategories
 import com.webdoc.Payment.PaymentMethodsActivity
 import com.webdoc.theforum.databinding.FragmentHomeBinding
-import java.util.*
 
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-
+    var getPropertiesViewModel: GetPropertiesViewModel? = null
     var check = 1
     var city = ""
     var arrayOfCities = arrayOf(
@@ -77,7 +76,29 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         initViews()
         clickListeners()
+        observers()
         return binding.root
+    }
+
+    private fun observers() {
+        getPropertiesViewModel!!.LDGetProperties().observe(activity as MainActivity) { response ->
+            if (response != null) {
+                if (response.result!=null) {
+                  //  cartResponse = response
+
+                    val layoutManager = LinearLayoutManager(activity as MainActivity)
+                    binding.rvHotSelling.setLayoutManager(layoutManager)
+                   val getPropertyAdapter = GetPropertiesAdapter(activity as MainActivity, response)
+                    binding.rvHotSelling.setAdapter(getPropertyAdapter)
+                    binding.tvNoItem.visibility = View.GONE
+                    Global.utils!!.hideCustomLoadingDialog()
+
+                } else {
+                    Global.utils!!.hideCustomLoadingDialog()
+                    binding.tvNoItem.setVisibility(View.VISIBLE)
+                }
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -89,7 +110,11 @@ class HomeFragment : Fragment() {
     private fun initViews() {
         pricePopulateRecycler()
         marlaPopulateRecycler()
-        hotSellingPopulateRecycler()
+        getPropertiesViewModel = ViewModelProvider(this).get(GetPropertiesViewModel::class.java)
+        Global.utils!!.showCustomLoadingDialog(activity as MainActivity)
+        getPropertiesViewModel!!.getPropertiesAPi()
+     //   hotSellingPopulateRecycler()
+
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -102,15 +127,15 @@ class HomeFragment : Fragment() {
 
 
         }
-        binding.tvForSale.setOnClickListener {
-            binding.view1.visibility = View.VISIBLE
-            binding.view2.visibility = View.GONE
-        }
-
-        binding.tvForBuy.setOnClickListener {
-            binding.view1.visibility = View.GONE
-            binding.view2.visibility = View.VISIBLE
-        }
+//        binding.tvForSale.setOnClickListener {
+//            binding.view1.visibility = View.VISIBLE
+//            binding.view2.visibility = View.GONE
+//        }
+//
+//        binding.tvForBuy.setOnClickListener {
+//            binding.view1.visibility = View.GONE
+//            binding.view2.visibility = View.VISIBLE
+//        }
 
         binding.clAppartment.setOnClickListener {
             binding.view5.visibility = View.VISIBLE
@@ -186,30 +211,14 @@ class HomeFragment : Fragment() {
         binding.rvMarlaCat.setAdapter(adapterMarla)
     }
 
-    private fun hotSellingPopulateRecycler() {
-        val layoutManager: RecyclerView.LayoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        binding.rvHotSelling.setLayoutManager(layoutManager)
-        val adapter = CurrentBiddingAdapter(activity as AppCompatActivity)
-        binding.rvHotSelling.setAdapter(adapter)
-    }
+//    private fun hotSellingPopulateRecycler() {
+//        val layoutManager: RecyclerView.LayoutManager =
+//            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+//        binding.rvHotSelling.setLayoutManager(layoutManager)
+//        val adapter = GetPropertiesAdapter(activity as AppCompatActivity)
+//        binding.rvHotSelling.setAdapter(adapter)
+//    }
 
-    fun TextView.leftDrawable(
-        @DrawableRes id: Int = 0,
-        @DimenRes sizeRes: Int = 0,
-        @ColorInt color: Int = 0,
-        @ColorRes colorRes: Int = 0
-    ) {
-        val drawable = ContextCompat.getDrawable(context, id)
-
-        if (color != 0) {
-            drawable?.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
-        } else if (colorRes != 0) {
-            val colorInt = ContextCompat.getColor(context, colorRes)
-            drawable?.setColorFilter(colorInt, PorterDuff.Mode.SRC_ATOP)
-        }
-        this.setCompoundDrawables(drawable, null, null, null)
-    }
 
     /* private fun readData(id: String) {
          databaseReference = FirebaseDatabase.getInstance().getReference("user")

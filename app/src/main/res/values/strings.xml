@@ -132,4 +132,12 @@
     <string name="time_5_days_left">Time: 5 Days Left</string>
     <string name="bid_finish">Bidding Time Finish!</string>
     <string name="buy_now">Buy Now</string>
+
+    <string-array name="labels">
+        <item>一档</item>
+        <item>二档</item>
+        <item>三档</item>
+        <item>四档</item>
+        <item>五档</item>
+    </string-array>
 </resources>

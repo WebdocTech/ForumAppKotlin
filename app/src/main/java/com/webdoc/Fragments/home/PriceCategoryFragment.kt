@@ -6,16 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.webdoc.Adapters.HotSellingAdapter
-import com.webdoc.Adapters.PriceCategoriesAdapter
 import com.webdoc.Adapters.PriceSubCategoryAdapter
 import com.webdoc.ModelClasses.AppartmentsModel
-import com.webdoc.ModelClasses.PriceCategories
 import com.webdoc.theforum.R
-import com.webdoc.theforum.databinding.FragmentHomeBinding
 import com.webdoc.theforum.databinding.FragmentPriceCategoryBinding
 import java.util.ArrayList
 

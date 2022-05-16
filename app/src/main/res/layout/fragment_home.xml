@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -24,126 +24,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:visibility="gone"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/cardbackground"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/tv_forSale"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:text="@string/for_sale"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toTopOf="@+id/view1"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_forBuy"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                    android:id="@+id/view1"
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/white"
-                    android:visibility="visible"
-                    app:layout_constraintEnd_toEndOf="@+id/tv_forSale"
-                    app:layout_constraintStart_toStartOf="@+id/tv_forSale"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_forSale" />
 
 
-                <View
-                    android:id="@+id/view2"
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@color/white"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tv_forBuy"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_forBuy" />
-
-                <View
-                    android:id="@+id/view10"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="#616161"
-                    android:visibility="visible"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_forBuy" />
-
-                <TextView
-                    android:id="@+id/tv_forBuy"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:text="@string/for_buy"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toTopOf="@+id/view2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tv_forSale"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-                <EditText
-                    android:id="@+id/textView5"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="#00000000"
-                    android:drawableStart="@drawable/ic_search"
-                    android:gravity="center"
-                    android:hint="@string/search_properties"
-                    android:textColor="@color/white"
-                    android:textColorHint="#555555"
-                    android:textCursorDrawable="@null"
-                    android:textSize="15sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view10" />
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="center"
-                    android:text="@string/multan"
-                    android:textColor="@color/white"
-                    app:drawableRightCompat="@drawable/ic_double_arrow"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view10" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/tv_category"
@@ -156,7 +38,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_appartment"
@@ -320,8 +202,8 @@
             android:id="@+id/rv_priceCat"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             app:layout_constraintBottom_toTopOf="@+id/view8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -342,9 +224,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_marlaCat"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             app:layout_constraintBottom_toTopOf="@+id/view9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -373,6 +255,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view9" />
 
+        <TextView
+            android:id="@+id/tv_noItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Property Found!"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_hotSelling"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view9" />
+
         <ImageView
             android:id="@+id/iv_payment"
             android:layout_width="50dp"
@@ -385,4 +279,4 @@
             app:srcCompat="@drawable/authentication" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

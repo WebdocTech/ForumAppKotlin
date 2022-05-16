@@ -1,0 +1,343 @@
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context="com.webdoc.Fragments.home.InstallmentPlanFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/btn_ins_proceed"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/tv_prop_ins_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:text="Office no 5"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tbl_ll"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TableLayout
+                android:id="@+id/tbl_ll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:stretchColumns="0,1"
+                app:layout_constraintBottom_toTopOf="@+id/seek_bar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_prop_ins_name">
+
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="#ffffff"
+
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_margin="1dp"
+                        android:background="#000"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Area"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:layout_margin="1dp"
+                        android:background="#000"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Price\nRs./sq"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:layout_margin="1dp"
+                        android:background="#000"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Pre-Launch\nOffer"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="3"
+                        android:layout_margin="1dp"
+                        android:background="#000"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Down\nPayment"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="4"
+                        android:layout_margin="1dp"
+                        android:background="#000"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Quarterly\nInstallment"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+
+                    android:layout_weight="1"
+                    android:background="#ffffff">
+
+                    <TextView
+                        android:id="@+id/tv_ins_area"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_margin="1dp"
+                        android:background="#000"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text=" Text"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tv_ins_pricePerSquareFoot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:layout_margin="1dp"
+                        android:background="#000"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text=" Text"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tv_ins_pricePerSquareFootDiscount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:layout_margin="1dp"
+                        android:background="#000"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text=" Text"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tv_ins_down_pay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:layout_margin="1dp"
+                        android:background="#000"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text=" Text"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tv_ins_quart_pay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:layout_margin="1dp"
+                        android:background="#000"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text=" Text"
+                        android:textColor="@color/white" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+
+                    android:layout_weight="1"
+                    android:background="#ffffff">
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_margin="1dp"
+                        android:background="#000"
+                        android:gravity="center"
+
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tv_ins_totalAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:layout_margin="1dp"
+                        android:background="#000"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text=" Text"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tv_ins_discountedAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:layout_margin="1dp"
+                        android:background="#000"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text=" Text"
+                        android:textColor="@color/white" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:layout_margin="1dp"
+                        android:background="#000"
+                        android:gravity="center"
+
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:layout_margin="1dp"
+                        android:background="#000"
+                        android:gravity="center"
+                        android:textColor="@color/white" />
+                </TableRow>
+            </TableLayout>
+
+            <com.zhouyou.view.seekbar.SignSeekBar
+                android:id="@+id/seek_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/view_tbl"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tbl_ll"
+                app:ssb_auto_adjust_section_mark="true"
+                app:ssb_second_track_color="@android:color/holo_green_light"
+                app:ssb_second_track_size="12dp"
+                app:ssb_show_section_mark="true"
+                app:ssb_show_section_text="true"
+                app:ssb_show_sign="true"
+                app:ssb_show_thumb_shadow="true"
+                app:ssb_show_thumb_text="false"
+                app:ssb_sides_labels="@array/labels"
+                app:ssb_text_space="3dp"
+                app:ssb_thumb_bg_alpha="0.3"
+                app:ssb_thumb_radius="5dp"
+                app:ssb_thumb_radius_on_dragging="10dp"
+                app:ssb_thumb_ratio="0.7"
+                app:ssb_thumb_text_size="16sp"
+                app:ssb_touch_to_seek="true"
+                app:ssb_track_color="@color/gray"
+                app:ssb_track_size="7dp" />
+            <View
+                android:id="@+id/view_tbl"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/gray"
+                app:layout_constraintBottom_toTopOf="@+id/tv_ins_des"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/seek_bar" />
+
+            <TextView
+                android:id="@+id/tv_ins_des"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:text="Description"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_tbl" />
+
+            <TextView
+                android:id="@+id/tv_ins_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Abc"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ins_des" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/btn_ins_proceed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_gradient"
+        android:drawableRight="@drawable/ic_arrow_right"
+        android:padding="10dp"
+
+        android:text="Proceeed To Payment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView2" />
+</androidx.constraintlayout.widget.ConstraintLayout>
