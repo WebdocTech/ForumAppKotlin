@@ -24,7 +24,6 @@ class BankAlfalahAccountViewModel  //todo : constructor
     }
 
 
-
     //todo : methods
     private inner class MyWebViewClient : WebViewClient() {
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
@@ -37,6 +36,7 @@ class BankAlfalahAccountViewModel  //todo : constructor
         wb!!.settings.javaScriptEnabled = true
         wb!!.settings.loadWithOverviewMode = true
         wb!!.settings.useWideViewPort = true
+        wb!!.getSettings().setDomStorageEnabled(true);
         wb!!.settings.builtInZoomControls = true
         wb!!.settings.pluginState = WebSettings.PluginState.ON
         wb!!.webViewClient = MyWebViewClient()

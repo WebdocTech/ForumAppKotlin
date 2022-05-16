@@ -19,7 +19,7 @@ class BankAlfalahAccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bank_alfalah_account)
-        initViews();
+        initViews()
         observers()
     }
 
@@ -36,11 +36,10 @@ class BankAlfalahAccountActivity : AppCompatActivity() {
     private fun observers() {
         viewModel!!.LD_open_BankAlfalah_Account_webview().observe(this, { s ->
             if (s is String) {
-                if (s.equals("Payment Succesfull")) {
-
+                if (s.equals("Payment Succesfull"))
+                {
                     Toast.makeText(this, "Payment Succesfull", Toast.LENGTH_LONG).show()
                     //todo : CAll your save payment APIS here
-
                 }
             } else if (s.equals("PAYMENT FAIL!")) {
                 Toast.makeText(this, "Payment Fail", Toast.LENGTH_LONG).show()
