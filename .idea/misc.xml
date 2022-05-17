@@ -58,6 +58,9 @@
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/grey_border.xml" value="0.142" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/grey_border_home.xml" value="0.142" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/ic_arrow_right.xml" value="0.11" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/installment_shape.xml" value="0.11" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/welcome_loginbtn_shape.xml" value="0.11" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/welcome_signupbtn_shape.xml" value="0.11" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_authentication.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_buy_now.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_get_number.xml" value="0.1921875" />

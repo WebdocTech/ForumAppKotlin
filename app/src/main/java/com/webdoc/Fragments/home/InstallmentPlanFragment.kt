@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.webdoc.Activities.MainActivity
 import com.webdoc.theforum.databinding.FragmentInstallmentPlanBinding
 import com.zhouyou.view.seekbar.SignSeekBar
+import com.zhouyou.view.seekbar.SignSeekBar.OnProgressChangedListener
+import java.util.*
 
 
 class InstallmentPlanFragment : Fragment() {
@@ -23,6 +24,22 @@ class InstallmentPlanFragment : Fragment() {
     private var tv_ins_quart_pay: String? = null
     private var tv_ins_totalAmount: String? = null
     private var tv_ins_discountedAmount: String? = null
+    private var abc: String? = null
+    var arrayOfCities = arrayOf(
+        "Select City",
+        "Rawalpindi",
+        "Islamabad",
+        "Lahore",
+        "Faisalabad",
+        "Karachi",
+        "Peshawar",
+        "Islamabad",
+        "Lahore",
+        "Faisalabad",
+        "Karachi",
+        "Peshawar"
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -90,32 +107,73 @@ class InstallmentPlanFragment : Fragment() {
             binding.tvInsPricePerSquareFoot.setText(tv_ins_pricePerSquareFoot)
             binding.tvInsPricePerSquareFootDiscount.setText(tv_ins_pricePerSquareFootDiscount)
             test3(binding.root)
-
         }
 
+        binding.seekBar.setOnProgressChangedListener(object : OnProgressChangedListener {
+            override fun onProgressChanged(
+                signSeekBar: SignSeekBar,
+                progress: Int,
+                progressFloat: Float,
+                fromUser: Boolean
+            ) {
+//
+if(progress==0){
+    abc = ((progress * tv_ins_quart_pay!!.toInt()).toString())
+    binding.tvYourInstallment.setText("Installment:\t"+abc.toString()+"/Rs")
+}else {
+    abc = (progress * tv_ins_quart_pay!!.toInt() + tv_ins_down_pay!!.toInt()).toString()
 
+    binding.tvYourInstallment.setText("Installment:\t"+abc.toString()+"/Rs")
+}
+
+            }
+
+            override fun getProgressOnActionUp(
+                signSeekBar: SignSeekBar,
+                progress: Int,
+                progressFloat: Float
+            ) {
+
+                val s: String = "hello"
+
+                //    binding.tvInsDes.setText(progress.toString());
+            }
+
+            override fun getProgressOnFinally(
+                signSeekBar: SignSeekBar,
+                progress: Int,
+                progressFloat: Float,
+                fromUser: Boolean
+            ) {
+
+
+                //  binding.tvInsDes.setText(progress.toString());
+            }
+        })
         //  upcomingBidPopulateRecycler()
+
     }
 
     private fun test3(view: View) {
         // val signSeekBar = view.findViewById<View>(R.id.demo_5_seek_bar_3) as SignSeekBar
         binding.seekBar.configBuilder
             .min(0f)
-            .max(4f)
-            .progress(2f)
-            .sectionCount(4)
-            .thumbColor(ContextCompat.getColor(requireContext(), R.color.holo_orange_light))
+            .max(12f)
+            .progress(0f)
+            .sectionCount(12)
+            .thumbColor(ContextCompat.getColor(requireContext(), R.color.holo_green_light))
             .sectionTextColor(
                 ContextCompat.getColor(
-                    requireContext(),
-                    R.color.holo_blue_bright
+                    requireContext(),R.color.background_light
+
                 )
             )
             .sectionTextSize(16)
-            .setUnit("s")
+            .setUnit("Installment")
             .sectionTextPosition(SignSeekBar.TextPosition.BELOW_SECTION_MARK)
             .build()
     }
+
 
 //    private fun upcomingBidPopulateRecycler() {
 //        binding.rvUpcomingBid.setLayoutManager(GridLayoutManager(activity as AppCompatActivity, 1))
@@ -123,3 +181,4 @@ class InstallmentPlanFragment : Fragment() {
 //        binding.rvUpcomingBid.setAdapter(adapter)
 //    }
 }
+

@@ -38,7 +38,7 @@ class BuyNowActivity : AppCompatActivity() {
 
     private fun Clicklisteners() {
         binding.tvCurrentBid.setOnClickListener {
-            loadFragment(FullPaymentFragment.newInstance(description!!, name!!, totalAmount!!))
+            loadFragment(FullPaymentFragment.newInstance(description!!, name!!, totalAmount!!,discountedAmount!!,areainSquareFoot!!,pricePerSquareFoot!!,pricePerSquareFootDiscount!!))
 
             binding.viewbid3.visibility = View.VISIBLE
             binding.viewbid4.visibility = View.GONE
@@ -82,7 +82,7 @@ class BuyNowActivity : AppCompatActivity() {
         projectName = intent.getStringExtra("projectName")
         projectCompany = intent.getStringExtra("projectCompany")
         userid = intent.getStringExtra("userid")
-        loadFragment(FullPaymentFragment.newInstance(description!!, name!!, totalAmount!!))
+        loadFragment(FullPaymentFragment.newInstance(description!!, name!!,totalAmount!!, discountedAmount!!,areainSquareFoot!!,pricePerSquareFoot!!,pricePerSquareFootDiscount!!))
 
         val imageList = ArrayList<SlideModel>()
         imageList.add(SlideModel(R.drawable.apparmentcurrent))

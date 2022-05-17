@@ -34,28 +34,28 @@ class VideoFragment : Fragment() {
     }
 
     private fun clickListeners() {
-        binding.tvCurrentBid.setOnClickListener {
-            loadFragment(FullPaymentFragment())
-            binding.viewbid3.visibility = View.VISIBLE
-            binding.viewbid4.visibility = View.GONE
-
-            binding.tvCurrentBid.setTextColor(Color.YELLOW)
-            binding.tvUpcomingBid.setTextColor(Color.WHITE)
-
-        }
-        binding.tvUpcomingBid.setOnClickListener {
-            loadFragment(InstallmentPlanFragment())
-            binding.viewbid3.visibility = View.GONE
-            binding.viewbid4.visibility = View.VISIBLE
-
-            binding.tvCurrentBid.setTextColor(Color.WHITE)
-            binding.tvUpcomingBid.setTextColor(Color.YELLOW)
-        }
+//        binding.tvCurrentBid.setOnClickListener {
+//            loadFragment(FullPaymentFragment())
+//            binding.viewbid3.visibility = View.VISIBLE
+//            binding.viewbid4.visibility = View.GONE
+//
+//            binding.tvCurrentBid.setTextColor(Color.YELLOW)
+//            binding.tvUpcomingBid.setTextColor(Color.WHITE)
+//
+//        }
+//        binding.tvUpcomingBid.setOnClickListener {
+//            loadFragment(InstallmentPlanFragment())
+//            binding.viewbid3.visibility = View.GONE
+//            binding.viewbid4.visibility = View.VISIBLE
+//
+//            binding.tvCurrentBid.setTextColor(Color.WHITE)
+//            binding.tvUpcomingBid.setTextColor(Color.YELLOW)
+//        }
     }
 
     private fun initViews() {
-        biddingFragmentManager = (activity as AppCompatActivity).supportFragmentManager
-        loadFragment(FullPaymentFragment())
+      //  biddingFragmentManager = (activity as AppCompatActivity).supportFragmentManager
+      //  loadFragment(FullPaymentFragment())
 
     }
 
