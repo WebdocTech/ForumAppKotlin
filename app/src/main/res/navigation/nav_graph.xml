@@ -22,9 +22,9 @@
         tools:layout="@layout/fragment_qa" />
     <fragment
         android:id="@+id/projectsFragment"
-        android:name="com.webdoc.Fragments.projects.ProjectsFragment"
+        android:name="com.webdoc.Fragments.myproperty.MyPropertyFragment"
         android:label="Projects"
-        tools:layout="@layout/fragment_projects" />
+        tools:layout="@layout/fragment_my_property" />
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.webdoc.Fragments.account.AccountFragment"

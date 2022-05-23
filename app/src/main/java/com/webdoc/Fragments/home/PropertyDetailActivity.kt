@@ -1,23 +1,30 @@
 package com.webdoc.Fragments.home
 
+import android.Manifest.permission.READ_EXTERNAL_STORAGE
+import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
+import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
+import android.os.Environment
 import android.view.*
+import android.webkit.CookieManager
+import android.webkit.URLUtil
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
-import com.webdoc.Activities.MainActivity
 import com.webdoc.Essentials.PreferencesNew
-import com.webdoc.Fragments.video.VideoFragment
 import com.webdoc.theforum.R
 import com.webdoc.theforum.databinding.ActivityPropertyDetailBinding
 
@@ -40,7 +47,7 @@ class PropertyDetailActivity : AppCompatActivity() {
     var paymentandfloorplan: String? = null
     var projectName: String? = null
     var projectCompany: String? = null
-
+    private val WRITE_PERMISSION = 3
     private var userid: String = ""
     lateinit var prefs: SharedPreferences
     lateinit var edit: SharedPreferences.Editor
@@ -60,6 +67,10 @@ class PropertyDetailActivity : AppCompatActivity() {
         actionBar = supportActionBar!!
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
         getSupportActionBar()?.setDisplayShowTitleEnabled(false);
+//        if(checkPermission()){
+//            requestPermission()
+//        }
+
         val intent = intent
         id = intent.getStringExtra("id")
         name = intent.getStringExtra("name")
@@ -153,6 +164,39 @@ class PropertyDetailActivity : AppCompatActivity() {
 ////            i.data = Uri.parse(url)
 ////            startActivity(i)
 //        }
+
+        binding.clNavigate.setOnClickListener {
+//            val uri: String =
+//                java.lang.String.format(Locale.ENGLISH, "geo:%f,%f", 33.52811569901712, 73.11350612580407)
+//            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+//            startActivity(intent)
+
+            val navigationIntentUri = Uri.parse("google.navigation:q=" + 33.54866653953476 + "," +  73.12450943347335)
+            val mapIntent = Intent(Intent.ACTION_VIEW, navigationIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
+        }
+        binding.clPlan.setOnClickListener {
+            try {
+                if (checkSelfPermission(
+                        applicationContext,
+                        READ_EXTERNAL_STORAGE
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    if (SDK_INT >= Build.VERSION_CODES.M) {
+                        requestPermissions(
+                            arrayOf(
+                                WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE
+                            ), WRITE_PERMISSION
+                        )
+                    }
+                } else {
+                    startDownloaing()
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
         binding.ivContact.setOnClickListener {
 
             val u: Uri = Uri.parse("tel:" + "+923443333737")
@@ -189,6 +233,91 @@ class PropertyDetailActivity : AppCompatActivity() {
         }
     }
 
+//    override fun onRequestPermissionsResult(
+//        requestCode: Int,
+//        permissions: Array<out String>,
+//        grantResults: IntArray
+//    ) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+//        when (requestCode) {
+//            WRITE_PERMISSION -> {
+//                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_DENIED) {
+//
+//                } else {
+//                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_LONG).show()
+//                }
+//            }
+//        }
+//    }
+
+    private fun startDownloaing() {
+        val request = DownloadManager.Request(Uri.parse(paymentandfloorplan))
+        val title = URLUtil.guessFileName(paymentandfloorplan, null, null)
+        request.setTitle(projectName + "\tPlan")
+        request.setDescription("Downloading file please wait...")
+        val cookie = CookieManager.getInstance().getCookie(paymentandfloorplan)
+        request.addRequestHeader("cookie", cookie)
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, title)
+        val downloadManager = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
+        downloadManager.enqueue(request)
+        Toast.makeText(this@PropertyDetailActivity, "Downloading Start...", Toast.LENGTH_SHORT)
+            .show()
+    }
+
+    //    private fun checkPermission(): Boolean {
+//        return if (SDK_INT >= Build.VERSION_CODES.R) {
+//            Environment.isExternalStorageManager()
+//        } else {
+//            val result =
+//                checkSelfPermission(this@PropertyDetailActivity, READ_EXTERNAL_STORAGE)
+//            val result1 =
+//                checkSelfPermission(this@PropertyDetailActivity, WRITE_EXTERNAL_STORAGE)
+//            result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED
+//        }
+//    }
+//    private fun requestPermission() {
+//        if (SDK_INT >= Build.VERSION_CODES.R) {
+//            try {
+//                val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
+//                intent.addCategory("android.intent.category.DEFAULT")
+//                intent.data =
+//                    Uri.parse(String.format("package:%s", applicationContext.packageName))
+//                startActivityForResult(intent, 2296)
+//            } catch (e: java.lang.Exception) {
+//                val intent = Intent()
+//                intent.action = Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION
+//                startActivityForResult(intent, 2296)
+//            }
+//        } else {
+//            //below android 11
+//            ActivityCompat.requestPermissions(
+//                this@PropertyDetailActivity,
+//                arrayOf(WRITE_EXTERNAL_STORAGE),
+//                WRITE_PERMISSION
+//            )
+//        }
+//    }
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            WRITE_PERMISSION -> if (grantResults.size > 0) {
+                val READ_EXTERNAL_STORAGE = grantResults[0] == PackageManager.PERMISSION_GRANTED
+                val WRITE_EXTERNAL_STORAGE = grantResults[1] == PackageManager.PERMISSION_GRANTED
+                if (READ_EXTERNAL_STORAGE && WRITE_EXTERNAL_STORAGE) {
+                    // perform action when allow permission success
+                } else {
+
+                    Toast.makeText(this, "Allow permission for storage access!", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+        }
+    }
 //    private fun setImage(imagesCounter: Int) {
 //        if (imagesCounter == 1) {
 //            binding.ivPropertyImg.setImageResource(R.drawable.apparmentcurrent)
@@ -265,6 +394,18 @@ class PropertyDetailActivity : AppCompatActivity() {
             false
         }
         return whatappisntalled
+    }
+
+    private fun isGoogleMapINstalled(): Boolean {
+        val packageManager: PackageManager = applicationContext.getPackageManager()
+        val googlemapisntalled: Boolean
+        googlemapisntalled = try {
+            packageManager.getPackageInfo("com.google.android.gms.maps ", 0)
+            true
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
+        }
+        return googlemapisntalled
     }
 }
 

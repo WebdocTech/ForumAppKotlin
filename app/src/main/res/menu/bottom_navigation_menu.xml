@@ -21,7 +21,7 @@
         android:id="@+id/nav_projects"
         android:enabled="true"
         android:icon="@drawable/project"
-        android:title="@string/projects"/>
+        android:title="My Property"/>
 
     <item
         android:id="@+id/nav_account"

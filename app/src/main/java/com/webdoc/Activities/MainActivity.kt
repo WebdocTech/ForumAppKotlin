@@ -18,7 +18,7 @@ import com.webdoc.Fragments.account.AccountFragment
 import com.webdoc.Fragments.questionanswer.QAFragment
 import com.webdoc.Fragments.video.VideoFragment
 import com.webdoc.Fragments.home.HomeFragment
-import com.webdoc.Fragments.projects.ProjectsFragment
+import com.webdoc.Fragments.myproperty.MyPropertyFragment
 import com.webdoc.theforum.R
 import com.webdoc.theforum.databinding.ActivityMainBinding
 
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                 return@OnItemSelectedListener true
             }
             R.id.nav_projects -> {
-                loadFragment(ProjectsFragment())
+                loadFragment(MyPropertyFragment())
                 return@OnItemSelectedListener true
             }
             R.id.nav_account -> {
@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
                 binding.bottomNavigatinView.menu.getItem(0)?.isChecked = true
             } else if (bse!!.name == QAFragment::class.java.name) {
                 binding.bottomNavigatinView.menu.getItem(2)?.isChecked = true
-            } else if (bse!!.name == ProjectsFragment::class.java.name) {
+            } else if (bse!!.name == MyPropertyFragment::class.java.name) {
                 binding.bottomNavigatinView.menu.getItem(3)?.isChecked = true
             } else if (bse!!.name == AccountFragment::class.java.name) {
                 binding.bottomNavigatinView.menu.getItem(4)?.isChecked = true
@@ -166,7 +166,7 @@ class MainActivity : AppCompatActivity() {
                 binding.bottomNavigatinView.getMenu().getItem(0).setChecked(true)
             } else if (bse == QAFragment::class.java.getName()) {
                 binding.bottomNavigatinView.getMenu().getItem(2).setChecked(true)
-            } else if (bse == ProjectsFragment::class.java.getName()) {
+            } else if (bse == MyPropertyFragment::class.java.getName()) {
                 binding.bottomNavigatinView.getMenu().getItem(3).setChecked(true)
             } else if (bse == AccountFragment::class.java.getName()) {
                 binding.bottomNavigatinView.getMenu().getItem(4).setChecked(true)

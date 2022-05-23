@@ -15,18 +15,27 @@ class FullPaymentFragment : Fragment() {
     private var description: String? = null
     private var name: String? = null
     private var amount: String? = null
+    private var discountAmount: String? = null
+    private var area: String? = null
+    private var pricePerSqFoot: String? = null
+    private var pricePerSqFootdiscount: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
 
     companion object {
-        fun newInstance(description: String, name: String,amount: String): FullPaymentFragment {
+        fun newInstance(description: String, name: String,amount: String,
+                        discountAmount: String,area: String,pricePerSqFoot: String,pricePerSqFootdiscount: String): FullPaymentFragment {
             val fragment = FullPaymentFragment()
             val args = Bundle()
             args.putString("description", description)
             args.putString("name", name)
             args.putString("amount", amount)
+            args.putString("discountAmount", discountAmount)
+            args.putString("area", area)
+            args.putString("pricePerSqFoot", pricePerSqFoot)
+            args.putString("pricePerSqFootdiscount", pricePerSqFootdiscount)
             fragment.arguments = args
             return fragment
         }
@@ -47,9 +56,17 @@ class FullPaymentFragment : Fragment() {
             description = args.getString("description").toString()
             name = args.getString("name").toString()
             amount = args.getString("amount").toString()
+            discountAmount = args.getString("discountAmount").toString()
+            area = args.getString("area").toString()
+            pricePerSqFoot = args.getString("pricePerSqFoot").toString()
+            pricePerSqFootdiscount = args.getString("pricePerSqFootdiscount").toString()
             binding.tvDescriptionPay.setText(description)
             binding.tvProprtyName.setText(name)
-            binding.tvPropAmount.setText(amount)
+            binding.tvFullTotalAmount.setText(amount)
+            binding.tvFullDiscountedAmount.setText(discountAmount)
+            binding.tvFullArea.setText(area+"\nsqft")
+            binding.tvFullPricePerSquareFoot.setText(pricePerSqFoot)
+            binding.tvFullPricePerSquareFootDiscount.setText(pricePerSqFootdiscount)
 
 
         }
