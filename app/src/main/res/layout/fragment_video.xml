@@ -1,126 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context="com.webdoc.Fragments.video.VideoFragment">
+    android:orientation="vertical">
 
 
-    <com.denzcoskun.imageslider.ImageSlider
-        android:id="@+id/img_slider"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
         android:layout_width="0dp"
-        android:layout_height="200dp"
-        app:iss_auto_cycle="true"
-        app:iss_corner_radius="10"
-        app:iss_delay="0"
-        app:iss_error_image="@android:color/darker_gray"
-        app:iss_period="3000"
-        app:iss_placeholder="@android:color/darker_gray"
-        app:iss_selected_dot="@drawable/default_selected_dot"
-        app:iss_unselected_dot="@drawable/default_unselected_dot"
-
-        app:layout_constraintBottom_toTopOf="@+id/viewbid1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <View
-        android:id="@+id/viewbid1"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#616161"
-        android:visibility="visible"
-        app:layout_constraintTop_toBottomOf="@+id/img_slider" />
-
-    <TextView
-        android:id="@+id/tv_currentBid"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="Full Payment"
-        android:textColor="@color/darkyellow"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/viewbid2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewbid1" />
-    <View
-        android:id="@+id/viewbid3"
-        android:layout_width="0dp"
-        android:layout_height="3dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/darkyellow"
-        app:layout_constraintBottom_toTopOf="@+id/subFragmentContainer"
-        app:layout_constraintEnd_toStartOf="@+id/viewbid2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_currentBid" />
-    <View
-        android:id="@+id/viewbid2"
-        android:layout_width="1dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/white"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/viewbid5"
-        app:layout_constraintEnd_toStartOf="@+id/tv_upcomingBid"
-        app:layout_constraintStart_toEndOf="@+id/tv_currentBid"
-        app:layout_constraintTop_toBottomOf="@+id/viewbid1" />
-
-    <TextView
-        android:id="@+id/tv_upcomingBid"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:gravity="center"
-        android:text="Installment Plan"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/viewbid5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/viewbid2"
-        app:layout_constraintTop_toBottomOf="@+id/viewbid1" />
-
-
-
-    <View
-        android:id="@+id/viewbid4"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-
-        android:background="@color/darkyellow"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/subFragmentContainer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/viewbid2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_upcomingBid" />
-
-
-    <View
-        android:id="@+id/viewbid5"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="#616161"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_currentBid" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/subFragmentContainer"
-        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewbid5">
+        app:layout_constraintTop_toTopOf="@+id/shimmer_loader" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/shimmer_loader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="8244-loading-state.json"
+        app:lottie_loop="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>

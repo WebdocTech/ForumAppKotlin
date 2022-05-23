@@ -10,7 +10,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
-
 class BankAlfalahAccountViewModel  //todo : constructor
     (application: Application) : AndroidViewModel(application) {
     var wb: WebView? = null

@@ -6,6 +6,8 @@ import android.net.Uri
 import android.util.Base64
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import com.webdoc.Fragments.video.VideoResponse.Video
+import com.webdoc.Fragments.video.VideoResponse.VideosResonse
 import com.webdoc.Models.PaymentModel
 import com.webdoc.webviewlibaray.JsBankWallet.ResponseModels.JsBankAuthApi
 import com.webdoc.webviewlibaray.JsBankWallet.ResponseModels.JsDebitInquiryResult.JsDebitInquiryResult
@@ -38,6 +40,9 @@ public class Global : Application() {
             }
             return encoded
         }
+
+        var videoList: ArrayList<Video> = ArrayList()
+        var videoResp: VideosResonse = VideosResonse()
         var jsPaymentFinal: JsDebitPaymentResponse = JsDebitPaymentResponse()
         var JS_Wallet_Account_Number: kotlin.String? = null
         var newToken: String? = null
