@@ -6,6 +6,8 @@ import android.net.Uri
 import android.util.Base64
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import com.webdoc.ApiResponseModels.MyPropertyResponse.MyPropertyResponse
+import com.webdoc.ApiResponseModels.MyPropertyResponse.PaymentDetail
 import com.webdoc.Models.PaymentModel
 import com.webdoc.webviewlibaray.JsBankWallet.ResponseModels.JsBankAuthApi
 import com.webdoc.webviewlibaray.JsBankWallet.ResponseModels.JsDebitInquiryResult.JsDebitInquiryResult
@@ -38,6 +40,11 @@ public class Global : Application() {
             }
             return encoded
         }
+
+        var position: Int? = 0
+        var propDetailList: ArrayList<PaymentDetail> = ArrayList()
+        var mypropResp: MyPropertyResponse = MyPropertyResponse()
+        var mypayResp: PaymentDetail = PaymentDetail()
         var jsPaymentFinal: JsDebitPaymentResponse = JsDebitPaymentResponse()
         var JS_Wallet_Account_Number: kotlin.String? = null
         var newToken: String? = null
@@ -58,9 +65,13 @@ public class Global : Application() {
         var applicationContext: Activity? = null
 
         @JvmField
-        var paymentTitle = java.util.ArrayList<PaymentModel>()
+        //  var paymentTitle = java.util.ArrayList<PaymentModel>()
+        var paymentTitle: java.util.ArrayList<PaymentModel> =
+            java.util.ArrayList<PaymentModel>()
+        var paymentDetail: MyPropertyResponse? = null
         var utils: Utils? = Utils()
         val APARTMENT_ID_KEY: String? = "wazifa_id"
         var uriArrayList = ArrayList<Uri>()
+
     }
 }

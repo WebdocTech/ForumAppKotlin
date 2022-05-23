@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_bidding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:elevation="5dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:contentDescription="@string/appartment_image"
+                android:scaleType="fitXY"
+                android:src="@drawable/apparmentupcoming" />
+
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_viewAllBid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/view"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_myProp_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/appartment_no"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_myProp_description"
+            app:layout_constraintStart_toEndOf="@+id/cv_bidding"
+            app:layout_constraintTop_toTopOf="@+id/cv_bidding" />
+
+        <TextView
+            android:id="@+id/tv_myProp_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:maxLines="2"
+            android:visibility="gone"
+            android:text="Description"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_myProp_sellType"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cv_bidding"
+            app:layout_constraintTop_toBottomOf="@+id/tv_myProp_name" />
+
+
+        <TextView
+            android:id="@+id/tv_myprop_seltype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="Sell Type"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_myProp_sellType"
+            app:layout_constraintStart_toEndOf="@+id/tv_myProp_sellType"
+            app:layout_constraintTop_toTopOf="@+id/tv_myProp_sellType" />
+
+        <TextView
+            android:id="@+id/tv_myProp_sellType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Sell Type:"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_myProp_purchaseDate"
+            app:layout_constraintStart_toEndOf="@+id/cv_bidding"
+            app:layout_constraintTop_toBottomOf="@+id/tv_myProp_description" />
+
+        <TextView
+            android:id="@+id/tv_myProp_purchDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="Purchase Date"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_myProp_purchaseDate"
+            app:layout_constraintStart_toEndOf="@+id/tv_myProp_purchaseDate"
+            app:layout_constraintTop_toTopOf="@+id/tv_myProp_purchaseDate" />
+        <TextView
+            android:id="@+id/tv_myProp_purchaseDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Purchase Date:"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_myProp_nextPayDate"
+            app:layout_constraintStart_toEndOf="@+id/cv_bidding"
+            app:layout_constraintTop_toBottomOf="@+id/tv_myProp_sellType" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_myProp_nextPDate"
+            android:text="Next Payment Date"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_myProp_nextPayDate"
+            app:layout_constraintStart_toEndOf="@+id/tv_myProp_nextPayDate"
+            app:layout_constraintTop_toTopOf="@+id/tv_myProp_nextPayDate"/>
+
+        <TextView
+            android:id="@+id/tv_myProp_nextPayDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Next Payment Date:\t"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_myProp_status"
+            app:layout_constraintStart_toEndOf="@+id/cv_bidding"
+            app:layout_constraintTop_toBottomOf="@+id/tv_myProp_purchaseDate" />
+
+        <TextView
+            android:id="@+id/tv_myProp_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+            android:text="Status"
+            android:visibility="gone"
+            android:textColor="#8BC34A"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/cv_bidding"
+            app:layout_constraintStart_toEndOf="@+id/cv_bidding"
+            app:layout_constraintTop_toBottomOf="@+id/tv_myProp_nextPayDate" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cv_bidding">
+
+            <TextView
+                android:id="@+id/tv_status_myProp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/status_shape"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Status"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_installment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cv_bidding">
+
+            <TextView
+                android:id="@+id/tv_total_installment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/status_shape"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Total Installment"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_paid_installment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_paid_installment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/status_shape"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Paid\nInstallment"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_remaining_installment"
+                app:layout_constraintStart_toEndOf="@+id/tv_total_installment"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_remaining_installment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/status_shape"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Remaining Installment"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_paid_installment"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,20 +43,20 @@ class WelcomeActivity : AppCompatActivity() {
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        fireBaseAuth = FirebaseAuth.getInstance()
+       // fireBaseAuth = FirebaseAuth.getInstance()
         prefs = getSharedPreferences("abc", Context.MODE_PRIVATE)
         edit = prefs.edit()
         userLogin = prefs.getBoolean(PreferencesNew.KEY_IS_LOGIN, false)
-        Log.i("sdsd", prefs.getBoolean(PreferencesNew.KEY_IS_LOGIN, true).toString())
-        val fireBaseUser = fireBaseAuth.currentUser
+        if (userLogin) {
+            val intent = Intent(this@WelcomeActivity, MainActivity::class.java)
+            startActivity(intent)
+        }
+    //    val fireBaseUser = fireBaseAuth.currentUser
 //        if (fireBaseUser != null && userLogin) {
 //            val intent = Intent(this, MainActivity::class.java)
 //            startActivity(intent)
 //        }
-        if (userLogin) {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+
 
     }
 }

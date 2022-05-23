@@ -59,12 +59,14 @@
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/grey_border_home.xml" value="0.142" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/ic_arrow_right.xml" value="0.11" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/installment_shape.xml" value="0.11" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/status_shape.xml" value="0.1585" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/welcome_loginbtn_shape.xml" value="0.11" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/welcome_signupbtn_shape.xml" value="0.11" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_authentication.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_buy_now.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_get_number.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_login.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_my_prop_detail.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_property_detail.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_registration.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_welcome.xml" value="0.1921875" />
@@ -76,12 +78,16 @@
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_full_payment.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_home.xml" value="0.1765625" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_installment_plan.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_projects.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_video.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_view_profile.xml" value="0.1" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_current_bidding.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_getproperties_items.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_hotselling_items.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_installment_plan.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_my_property.xml" value="0.33" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_my_property_payment.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_projects.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_questions.xml" value="0.14375" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_recomended.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1921875" />

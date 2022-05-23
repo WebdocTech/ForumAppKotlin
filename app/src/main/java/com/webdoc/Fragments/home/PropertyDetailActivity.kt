@@ -254,14 +254,14 @@ class PropertyDetailActivity : AppCompatActivity() {
         val request = DownloadManager.Request(Uri.parse(paymentandfloorplan))
         val title = URLUtil.guessFileName(paymentandfloorplan, null, null)
         request.setTitle(projectName + "\tPlan")
-        request.setDescription("Downloading fille please wait...")
+        request.setDescription("Downloading file please wait...")
         val cookie = CookieManager.getInstance().getCookie(paymentandfloorplan)
         request.addRequestHeader("cookie", cookie)
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
         request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, title)
         val downloadManager = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
         downloadManager.enqueue(request)
-        Toast.makeText(this@PropertyDetailActivity, "Downloading File...", Toast.LENGTH_SHORT)
+        Toast.makeText(this@PropertyDetailActivity, "Downloading Start...", Toast.LENGTH_SHORT)
             .show()
     }
 
