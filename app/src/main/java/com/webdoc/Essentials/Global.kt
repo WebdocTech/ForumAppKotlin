@@ -43,6 +43,13 @@ public class Global : Application() {
             return encoded
         }
 
+        var installmentAmount: String = ""
+        var propertyName: String = ""
+        var totalAmount: String = ""
+        var downPayment: String = ""
+        var noOfInstallment: String = ""
+        var paidAmount: String = ""
+        var sellType: String = ""
         var videoList: ArrayList<Video> = ArrayList()
         var videoResp: VideosResonse = VideosResonse()
         var position: Int? = 0

@@ -75,6 +75,9 @@ class StripeActivity : AppCompatActivity() {
                     binding!!.webView.destroy()
                     Global.utils!!.showSuccessSnakeBar(this@StripeActivity, "Success")
 
+                   // viewModel.callPaymentAPi()
+
+
                 } /*else {
                     //todo: payment Fail
                     Toast.makeText(StripeActivity.this, "PAYMENT FAIL!", Toast.LENGTH_SHORT).show();

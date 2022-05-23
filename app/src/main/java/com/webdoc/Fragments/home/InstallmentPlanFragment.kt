@@ -7,17 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.webdoc.Essentials.Global
 import com.webdoc.theforum.databinding.FragmentInstallmentPlanBinding
 import com.zhouyou.view.seekbar.SignSeekBar
 import com.zhouyou.view.seekbar.SignSeekBar.OnProgressChangedListener
 import java.text.DecimalFormat
-import java.util.*
-import kotlin.math.roundToInt
 
 
 class InstallmentPlanFragment : Fragment() {
     private lateinit var binding: FragmentInstallmentPlanBinding
     private var description: String? = null
+    private var yourFormattedString = ""
     private var name: String? = null
     private var tv_ins_area: String? = null
     private var tv_ins_pricePerSquareFoot: String? = null
@@ -108,7 +108,17 @@ class InstallmentPlanFragment : Fragment() {
             binding.tvInsQuartPay.setText(tv_ins_quart_pay)
             binding.tvInsPricePerSquareFoot.setText(tv_ins_pricePerSquareFoot)
             binding.tvInsPricePerSquareFootDiscount.setText(tv_ins_pricePerSquareFootDiscount)
+
+            Global.sellType = "Installment"
+            Global.paidAmount = tv_ins_totalAmount.toString()
+            Global.noOfInstallment = "0"
+            Global.downPayment = tv_ins_down_pay.toString()
+            Global.totalAmount = tv_ins_totalAmount.toString()
+            Global.propertyName = name.toString()
+            Global.installmentAmount = ""
+
             test3(binding.root)
+
         }
 
         binding.seekBar.setOnProgressChangedListener(object : OnProgressChangedListener {
@@ -130,9 +140,12 @@ class InstallmentPlanFragment : Fragment() {
                     binding.tvYourInstallment.visibility = View.VISIBLE
                     abc =
                         (progress * tv_ins_quart_pay!!.toInt() + tv_ins_down_pay!!.toInt()).toString()
-                    val yourFormattedString: String = formatter.format(abc!!.toInt())
+                    yourFormattedString = formatter.format(abc!!.toInt())
                     binding.tvYourInstallment.setText("Total:\t" + yourFormattedString.toString() + "/Rs")
                 }
+
+                Global.installmentAmount = yourFormattedString.toString()
+
 
             }
 
