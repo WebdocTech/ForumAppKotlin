@@ -24,6 +24,7 @@ import com.webdoc.ApiResponseModels.MyPropertyResponse.PaymentDetail
 import com.webdoc.Essentials.Global
 import com.webdoc.theforum.R
 import com.webdoc.theforum.databinding.ActivityMyPropDetailBinding
+import java.text.DecimalFormat
 
 class MyPropDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMyPropDetailBinding
@@ -49,6 +50,8 @@ class MyPropDetailActivity : AppCompatActivity() {
     private var remainingInstallment: String? = null
     private val WRITE_PERMISSION = 4
     private var myPropertyResponse: MyPropertyResponse? = null
+
+    private var paymentFormat: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViews()
@@ -91,7 +94,9 @@ class MyPropDetailActivity : AppCompatActivity() {
 
 
         binding.tvMyPropArea.setText(areainSquareFoot + "sq")
-        binding.tvMyPropPrice.setText(totalPayment)
+        val formatter = DecimalFormat("#,###,###")
+        val yourFormattedString: String = formatter.format(totalPayment!!.toInt())
+        binding.tvMyPropPrice.setText(yourFormattedString)
         binding.tvMyPropDescription.setText(description)
         binding.tvMyPropName.setText(name)
 

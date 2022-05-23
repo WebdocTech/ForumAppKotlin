@@ -9,6 +9,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.webdoc.theforum.R
 import com.webdoc.theforum.databinding.FragmentFullPaymentBinding
+import java.text.DecimalFormat
 
 class FullPaymentFragment : Fragment() {
     private lateinit var binding: FragmentFullPaymentBinding
@@ -60,13 +61,19 @@ class FullPaymentFragment : Fragment() {
             area = args.getString("area").toString()
             pricePerSqFoot = args.getString("pricePerSqFoot").toString()
             pricePerSqFootdiscount = args.getString("pricePerSqFootdiscount").toString()
+
+            val formatter = DecimalFormat("#,###,###")
+            val totalpayformat: String = formatter.format(amount!!.toInt())
+            val discountpayformat: String = formatter.format(discountAmount!!.toInt())
+            val persqpayformat: String = formatter.format(pricePerSqFoot!!.toInt())
+            val persqdispayformat: String = formatter.format(pricePerSqFootdiscount!!.toInt())
             binding.tvDescriptionPay.setText(description)
             binding.tvProprtyName.setText(name)
-            binding.tvFullTotalAmount.setText(amount)
-            binding.tvFullDiscountedAmount.setText(discountAmount)
+            binding.tvFullTotalAmount.setText(totalpayformat)
+            binding.tvFullDiscountedAmount.setText(discountpayformat)
             binding.tvFullArea.setText(area+"\nsqft")
-            binding.tvFullPricePerSquareFoot.setText(pricePerSqFoot)
-            binding.tvFullPricePerSquareFootDiscount.setText(pricePerSqFootdiscount)
+            binding.tvFullPricePerSquareFoot.setText(persqpayformat)
+            binding.tvFullPricePerSquareFootDiscount.setText(persqdispayformat)
 
 
         }
