@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.webdoc.ApiResponseModels.GetPropertiesResponse.GetPropertiesResponse
 import com.webdoc.Fragments.home.PropertyDetailActivity
 import com.webdoc.theforum.R
+import java.text.DecimalFormat
 
 class GetPropertiesAdapter(var context: Context,var getPropResponse: GetPropertiesResponse) :
     RecyclerView.Adapter<GetPropertiesAdapter.MyViewHolder>() {
@@ -40,11 +41,14 @@ class GetPropertiesAdapter(var context: Context,var getPropResponse: GetProperti
         val projectName= getPropResponse!!.result!!.get(position).projectName
         val projectCompany= getPropResponse!!.result!!.get(position).projectCompany
 
+        val formatter = DecimalFormat("#,###,###")
+        val totalpayformat: String = formatter.format(getPropResponse!!.result!!.get(position).totalAmount!!.toInt())
+
         holder.tv_prop_name!!.setText(
             getPropResponse!!.result!!.get(position).name
         )
         holder.tv_prop_price!!.setText(
-            "Price:\t" + getPropResponse!!.result!!.get(position).totalAmount
+            "Price:\t" + totalpayformat
         )
         holder.tv_prop_area!!.setText(
             "Area:\t" + getPropResponse!!.result!!.get(position).areainSquareFoot +"sq"

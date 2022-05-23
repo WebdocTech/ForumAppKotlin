@@ -313,28 +313,30 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
                 android:id="@+id/tbl_ll"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+               android:layout_margin="5dp"
                 android:background="@color/white"
                 android:gravity="center"
                 android:stretchColumns="0,1,2,3,4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_paymentDetails">
 
 
                 <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#ffffff"
+                    android:layout_margin="1dp"
+                    android:gravity="center"
+                    android:background="#000"
 
                     >
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
                         android:layout_column="0"
-                        android:layout_margin="1dp"
+
                         android:background="#000"
                         android:gravity="center"
                         android:padding="5dp"
@@ -343,22 +345,22 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
                         android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_column="1"
-                        android:layout_margin="1dp"
+
                         android:background="#000"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:text="Transaction ID"
+                        android:text="Transaction\nID"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_column="2"
-                        android:layout_margin="1dp"
+
                         android:background="#000"
                         android:gravity="center"
                         android:padding="5dp"
@@ -367,10 +369,10 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
                         android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
                         android:layout_column="3"
-                        android:layout_margin="1dp"
+
                         android:background="#000"
                         android:gravity="center"
                         android:padding="5dp"
@@ -379,10 +381,9 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
                         android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
                         android:layout_column="4"
-                        android:layout_margin="1dp"
                         android:background="#000"
                         android:gravity="center"
                         android:padding="5dp"

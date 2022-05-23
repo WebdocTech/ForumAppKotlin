@@ -1,18 +1,17 @@
 package com.webdoc.Fragments.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.webdoc.Activities.MainActivity
-import com.webdoc.Essentials.Global
-import com.webdoc.Payment.PaymentMethodsActivity
+import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.models.SlideModel
+import com.webdoc.theforum.R
 import com.webdoc.theforum.databinding.FragmentFullPaymentBinding
+import java.text.DecimalFormat
 
 class FullPaymentFragment : Fragment() {
-    private val intent: Intent? = null
     private lateinit var binding: FragmentFullPaymentBinding
     private var description: String? = null
     private var name: String? = null
@@ -27,15 +26,8 @@ class FullPaymentFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(
-            description: String,
-            name: String,
-            amount: String,
-            discountAmount: String,
-            area: String,
-            pricePerSqFoot: String,
-            pricePerSqFootdiscount: String
-        ): FullPaymentFragment {
+        fun newInstance(description: String, name: String,amount: String,
+                        discountAmount: String,area: String,pricePerSqFoot: String,pricePerSqFootdiscount: String): FullPaymentFragment {
             val fragment = FullPaymentFragment()
             val args = Bundle()
             args.putString("description", description)
@@ -56,7 +48,6 @@ class FullPaymentFragment : Fragment() {
     ): View? {
         binding = FragmentFullPaymentBinding.inflate(inflater, container, false)
         initViews()
-        clicklistenrer()
         return binding.root
     }
 
@@ -70,36 +61,21 @@ class FullPaymentFragment : Fragment() {
             area = args.getString("area").toString()
             pricePerSqFoot = args.getString("pricePerSqFoot").toString()
             pricePerSqFootdiscount = args.getString("pricePerSqFootdiscount").toString()
+
+            val formatter = DecimalFormat("#,###,###")
+            val totalpayformat: String = formatter.format(amount!!.toInt())
+            val discountpayformat: String = formatter.format(discountAmount!!.toInt())
+            val persqpayformat: String = formatter.format(pricePerSqFoot!!.toInt())
+            val persqdispayformat: String = formatter.format(pricePerSqFootdiscount!!.toInt())
             binding.tvDescriptionPay.setText(description)
             binding.tvProprtyName.setText(name)
-            binding.tvFullTotalAmount.setText(amount)
-            binding.tvFullDiscountedAmount.setText(discountAmount)
-            binding.tvFullArea.setText(area + "\nsqft")
-            binding.tvFullPricePerSquareFoot.setText(pricePerSqFoot)
-            binding.tvFullPricePerSquareFootDiscount.setText(pricePerSqFootdiscount)
-
-            Global.sellType = "FullPayment"
-            Global.paidAmount = amount as String
-            Global.noOfInstallment = "0"
-            Global.downPayment = amount as String
-            Global.totalAmount = amount as String
-            Global.propertyName = name as String
-            Global.installmentAmount = "0"
+            binding.tvFullTotalAmount.setText(totalpayformat)
+            binding.tvFullDiscountedAmount.setText(discountpayformat)
+            binding.tvFullArea.setText(area+"\nsqft")
+            binding.tvFullPricePerSquareFoot.setText(persqpayformat)
+            binding.tvFullPricePerSquareFootDiscount.setText(persqdispayformat)
 
 
-        }
-
-    }
-
-    private fun clicklistenrer() {
-
-        binding.btnFullProceed.setOnClickListener {
-
-            val intent =
-                Intent(activity as MainActivity, PaymentMethodsActivity::class.java)
-            intent.putExtra("optCode", "fdds")
-            intent.putExtra("phoneNo", "phoneNo")
-            startActivity(intent)
         }
 
     }

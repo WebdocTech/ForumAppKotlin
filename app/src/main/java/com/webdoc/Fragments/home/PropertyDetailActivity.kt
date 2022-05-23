@@ -27,6 +27,7 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.webdoc.Essentials.PreferencesNew
 import com.webdoc.theforum.R
 import com.webdoc.theforum.databinding.ActivityPropertyDetailBinding
+import java.text.DecimalFormat
 
 
 class PropertyDetailActivity : AppCompatActivity() {
@@ -92,9 +93,11 @@ class PropertyDetailActivity : AppCompatActivity() {
         edit = prefs.edit()
 
         userid = prefs.getString(PreferencesNew.KEY_ApplicationUserId, "").toString()
+        val formatter = DecimalFormat("#,###,###")
+        val totalpayformat: String = formatter.format(totalAmount!!.toInt())
 
         binding.tvArea.setText(areainSquareFoot + "sq")
-        binding.tvPrice.setText(totalAmount)
+        binding.tvPrice.setText(totalpayformat)
         binding.tvDescription.setText(description)
         binding.tvName.setText(name)
 

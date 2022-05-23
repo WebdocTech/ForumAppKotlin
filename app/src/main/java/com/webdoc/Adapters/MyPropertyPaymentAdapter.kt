@@ -11,6 +11,7 @@ import com.webdoc.ApiResponseModels.MyPropertyResponse.MyPropertyResponse
 import com.webdoc.ApiResponseModels.MyPropertyResponse.PaymentDetail
 import com.webdoc.Essentials.Global
 import com.webdoc.theforum.R
+import java.text.DecimalFormat
 
 class MyPropertyPaymentAdapter(var context: Context, var myPropertyResponse: MyPropertyResponse) :
     RecyclerView.Adapter<MyPropertyPaymentAdapter.MyViewHolder>() {
@@ -62,12 +63,15 @@ class MyPropertyPaymentAdapter(var context: Context, var myPropertyResponse: MyP
         }
 
 
+        val formatter = DecimalFormat("#,###,###")
+        val debitformat: String = formatter.format(Global.propDetailList.get(position).debit.toInt())
+        val creditformat: String = formatter.format(Global.propDetailList.get(position).credit.toInt())
+        val balanceformat: String = formatter.format(Global.propDetailList.get(position).balance.toInt())
 
-
-        holder.tv_pay_debit!!.setText(Global.propDetailList.get(position).debit)
-        holder.tv_pay_credit!!.setText(Global.propDetailList.get(position).credit)
+        holder.tv_pay_debit!!.setText(debitformat)
+        holder.tv_pay_credit!!.setText(creditformat)
         holder.tv_pay_date!!.setText(Global.propDetailList.get(position).date)
-        holder.tv_pay_balance!!.setText(Global.propDetailList.get(position).balance)
+        holder.tv_pay_balance!!.setText(balanceformat)
         holder.tv_pay_transId!!.setText(Global.propDetailList.get(position).transectionId)
         holder.tv_payment_remarks!!.setText(Global.propDetailList.get(position).remarks)
 

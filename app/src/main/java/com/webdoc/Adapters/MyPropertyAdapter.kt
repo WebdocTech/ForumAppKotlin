@@ -15,6 +15,7 @@ import com.webdoc.ApiResponseModels.MyPropertyResponse.PaymentDetail
 import com.webdoc.Essentials.Global
 import com.webdoc.Fragments.myproperty.MyPropDetailActivity
 import com.webdoc.theforum.R
+import java.text.DecimalFormat
 
 class MyPropertyAdapter(var context: Context, var myPropertyResponse: MyPropertyResponse) :
     RecyclerView.Adapter<MyPropertyAdapter.MyViewHolder>() {
@@ -68,6 +69,9 @@ class MyPropertyAdapter(var context: Context, var myPropertyResponse: MyProperty
             holder.tv_myProp_nextPayDate!!.visibility = View.GONE
             holder.tv_status_myProp!!.setTextColor(Color.GREEN)
         }
+
+
+
         holder.tv_myProp_name!!.setText(name)
         holder.tv_myProp_description!!.setText(description)
         holder.tv_myProp_purchDate!!.setText(purchaseDate)
@@ -117,7 +121,7 @@ class MyPropertyAdapter(var context: Context, var myPropertyResponse: MyProperty
             context.startActivity(intent)
             Global.position = position
             Global.propDetailList = list
-            
+
         }
 
     }
