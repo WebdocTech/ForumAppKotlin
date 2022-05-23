@@ -5,16 +5,15 @@ import com.webdoc.ApiResponseModels.GetPropertiesResponse.GetPropertiesResponse;
 import com.webdoc.ApiResponseModels.LoginResponse.LoginResponse;
 import com.webdoc.ApiResponseModels.MyPropertyResponse.MyPropertyResponse;
 import com.webdoc.ApiResponseModels.RegisterationResponse.RegisterationResponse;
+import com.webdoc.Fragments.video.VideoResponse.VideosResonse;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 public interface APIInterface {
-
 
 
     @POST("Register")
@@ -26,7 +25,9 @@ public interface APIInterface {
     @GET("Properties")
     Call<GetPropertiesResponse> getProperties();
 
-
     @POST("MyProperty")
     Call<MyPropertyResponse> myProperties(@Body JsonObject jsonObject);
+
+    @GET("Customer/Video")
+    Call<VideosResonse> getVideos();
 }

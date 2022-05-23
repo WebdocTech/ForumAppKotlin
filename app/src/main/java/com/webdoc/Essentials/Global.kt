@@ -8,6 +8,8 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.webdoc.ApiResponseModels.MyPropertyResponse.MyPropertyResponse
 import com.webdoc.ApiResponseModels.MyPropertyResponse.PaymentDetail
+import com.webdoc.Fragments.video.VideoResponse.Video
+import com.webdoc.Fragments.video.VideoResponse.VideosResonse
 import com.webdoc.Models.PaymentModel
 import com.webdoc.webviewlibaray.JsBankWallet.ResponseModels.JsBankAuthApi
 import com.webdoc.webviewlibaray.JsBankWallet.ResponseModels.JsDebitInquiryResult.JsDebitInquiryResult
@@ -41,6 +43,8 @@ public class Global : Application() {
             return encoded
         }
 
+        var videoList: ArrayList<Video> = ArrayList()
+        var videoResp: VideosResonse = VideosResonse()
         var position: Int? = 0
         var propDetailList: ArrayList<PaymentDetail> = ArrayList()
         var mypropResp: MyPropertyResponse = MyPropertyResponse()
