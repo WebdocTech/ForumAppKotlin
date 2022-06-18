@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.widget.EditText
@@ -24,16 +25,21 @@ class OTPVerificationActivity : AppCompatActivity() {
     private var otp_received: String? = null
     private var phoneNo: String? = null
     private lateinit var firebaseAuth: FirebaseAuth
+    private var forceResendingToken: ForceResendingToken? = null
+
+    //  private var mCallbacks: OnVerificationStateChangedCallbacks? = null
+    var mVerificationId: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViews()
+
         clicklisteners()
         pinMovementListener()
     }
 
     private fun clicklisteners() {
         binding.btnVerifyOtp.setOnClickListener(View.OnClickListener {
-            Global.utils!!.showCustomLoadingDialog(this@OTPVerificationActivity)
+          //  Global.utils!!.showCustomLoadingDialog(this@OTPVerificationActivity)
             val otp_entered = binding.etGetCodeOne.text.toString() +
                     binding.etGetCodeTwo.text.toString() +
                     binding.etGetCodeThree.text.toString() +
@@ -53,19 +59,75 @@ class OTPVerificationActivity : AppCompatActivity() {
                 Toast.makeText(this@OTPVerificationActivity, "OTP not received", Toast.LENGTH_SHORT)
                     .show()
             } else {
-                val credential = PhoneAuthProvider.getCredential(otp_received!!, otp_entered)
-                signInWithCredential(credential)
+                Global.utils!!.showCustomLoadingDialog(this@OTPVerificationActivity)
+               // verifyPhoneNumberWithCode(mVerificationId!!, otp_entered)
+                   val credential = PhoneAuthProvider.getCredential(otp_received!!, otp_entered)
+
+                   signInWithCredential(credential)
             }
         })
 
         binding.btnResendCode.setOnClickListener {
             Global.utils!!.showCustomLoadingDialog(this@OTPVerificationActivity)
-            sendVerificationCode(phoneNo.toString())
+             sendVerificationCode(phoneNo!!, forceResendingToken!!)
+           // resendVerificationCode(phoneNo!!, forceResendingToken!!)
             Toast.makeText(
                 this@OTPVerificationActivity,
                 "Code will be send soon",
                 Toast.LENGTH_LONG
             ).show()
+        }
+    }
+
+    private fun verifyPhoneNumberWithCode(mVerificationId: String, code: String) {
+
+        val credential = PhoneAuthProvider.getCredential(mVerificationId, code)
+        signInWithPhoneAuthCredential(credential)
+    }
+
+    private fun resendVerificationCode(phone: String, token: ForceResendingToken) {
+       // Global.utils!!.showCustomLoadingDialog(this@OTPVerificationActivity)
+        val options = PhoneAuthOptions.newBuilder(firebaseAuth)
+            .setPhoneNumber(phone)
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setActivity(this@OTPVerificationActivity)
+            .setCallbacks(mCallbacks)
+            .setForceResendingToken(token)
+            .build()
+        PhoneAuthProvider.verifyPhoneNumber(options)
+    }
+
+    private fun startPhoneNumberVerification(phone: String) {
+        val options = PhoneAuthOptions.newBuilder(firebaseAuth)
+            .setPhoneNumber(phone)
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setActivity(this@OTPVerificationActivity)
+            .setCallbacks(mCallbacks)
+            .build()
+        PhoneAuthProvider.verifyPhoneNumber(options)
+    }
+
+    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+        //  pd.setMessage("Logging In")
+        firebaseAuth.signInWithCredential(credential).addOnSuccessListener {
+            //   pd.dismiss()
+            val phone = firebaseAuth.currentUser!!.phoneNumber
+            Toast.makeText(this@OTPVerificationActivity, "Logging In As$phone", Toast.LENGTH_SHORT)
+                .show()
+            Global.utils!!.hideCustomLoadingDialog()
+//                    Toast.makeText(
+//                        this@OTPVerificationActivity,
+//                        "Verification Successful..",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+
+            val intent = Intent(this@OTPVerificationActivity, RegistrationActivity::class.java)
+            intent.putExtra("phoneNo", phoneNo)
+            startActivity(intent)
+            finishAffinity()
+        }.addOnFailureListener { e ->
+            Global.utils!!.hideCustomLoadingDialog()
+            Toast.makeText(this@OTPVerificationActivity, "" + e.message, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -284,12 +346,20 @@ class OTPVerificationActivity : AppCompatActivity() {
         signInWithCredential(credential)
     }
 
-    private fun sendVerificationCode(number: String) {
-        val options = PhoneAuthOptions.newBuilder(firebaseAuth!!)
-            .setPhoneNumber(number) // Phone number to verify
-            .setTimeout(100L, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(this) // Activity (for callback binding)
-            .setCallbacks(mCallBack) // OnVerificationStateChangedCallbacks
+    private fun sendVerificationCode(number: String,token: ForceResendingToken) {
+//        val options = PhoneAuthOptions.newBuilder(firebaseAuth!!)
+//            .setPhoneNumber(number) // Phone number to verify
+//            .setTimeout(100L, TimeUnit.SECONDS) // Timeout and unit
+//            .setActivity(this) // Activity (for callback binding)
+//            .setCallbacks(mCallBack) // OnVerificationStateChangedCallbacks
+//            .build()
+//        PhoneAuthProvider.verifyPhoneNumber(options)
+        val options = PhoneAuthOptions.newBuilder(firebaseAuth)
+            .setPhoneNumber(number)
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setActivity(this@OTPVerificationActivity)
+            .setCallbacks(mCallbacks)
+            .setForceResendingToken(token)
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
@@ -322,8 +392,8 @@ class OTPVerificationActivity : AppCompatActivity() {
             }
         }
 
-    private fun signInWithCredential(credential: PhoneAuthCredential) {
-        firebaseAuth!!.signInWithCredential(credential)
+        private fun signInWithCredential(credential: PhoneAuthCredential) {
+        firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Global.utils!!.hideCustomLoadingDialog()
@@ -349,6 +419,66 @@ class OTPVerificationActivity : AppCompatActivity() {
                 }
             }
     }
+//    private val mCallbacks = object : OnVerificationStateChangedCallbacks() {
+//        override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
+//            signInWithPhoneAuthCredential(phoneAuthCredential)
+//        }
+//
+//        override fun onVerificationFailed(e: FirebaseException) {
+//            Global.utils!!.hideCustomLoadingDialog()
+//            Toast.makeText(this@OTPVerificationActivity, "" + e.message, Toast.LENGTH_SHORT)
+//                .show()
+//        }
+//
+//        override fun onCodeSent(verificationId: String, token: ForceResendingToken) {
+//            super.onCodeSent(verificationId, forceResendingToken!!)
+//
+//            mVerificationId = verificationId
+//            forceResendingToken = token
+//            Global.utils!!.hideCustomLoadingDialog()
+//
+//            Toast.makeText(
+//                this@OTPVerificationActivity,
+//                "Verification Code Sent...",
+//                Toast.LENGTH_SHORT
+//            ).show()
+////                binding.tvOtpDescription.setText(
+////                    """
+////                Please type the verification code we sent
+////                ${binding.edNumber.getText().toString().trim()}
+////                """.trimIndent()
+////                )
+//        }
+//    }
 
+    private val mCallbacks =
+    object : OnVerificationStateChangedCallbacks() {
+        override fun onVerificationCompleted(phoneAuthCredential: PhoneAuthCredential) {
+            signInWithPhoneAuthCredential(phoneAuthCredential)
+        }
 
+        override fun onVerificationFailed(e: FirebaseException) {
+         //   pd.dismiss()
+            Global.utils!!.hideCustomLoadingDialog()
+            Toast.makeText(this@OTPVerificationActivity, "" + e.message, Toast.LENGTH_SHORT).show()
+        }
+
+        override fun onCodeSent(verificationId: String, token: ForceResendingToken) {
+            super.onCodeSent(verificationId, forceResendingToken!!)
+
+            mVerificationId = verificationId
+            forceResendingToken = token
+           // pd.dismiss()
+            Global.utils!!.hideCustomLoadingDialog()
+//            binding.constraintPhone.setVisibility(View.GONE)
+//            binding.constraintOtp.setVisibility(View.VISIBLE)
+            Toast.makeText(this@OTPVerificationActivity, "Verification Code Sent...", Toast.LENGTH_SHORT).show()
+//            binding.tvOtpDescription.setText(
+//                """
+//                Please type the verification code we sent
+//                ${binding.edNumber.getText().toString().trim()}
+//                """.trimIndent()
+//            )
+        }
+    }
 }

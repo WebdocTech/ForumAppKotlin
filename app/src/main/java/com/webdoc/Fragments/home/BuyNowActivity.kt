@@ -14,7 +14,7 @@ import com.webdoc.theforum.databinding.ActivityBuyNowBinding
 class BuyNowActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBuyNowBinding
     private lateinit var buynowFragmentManager: FragmentManager
-    private var id: String? = null
+    private var propid: Int? = null
     private var name: String? = null
     private var description: String? = null
     private var pricePerSquareFoot: String? = null
@@ -38,7 +38,9 @@ class BuyNowActivity : AppCompatActivity() {
 
     private fun Clicklisteners() {
         binding.tvCurrentBid.setOnClickListener {
-            loadFragment(FullPaymentFragment.newInstance(description!!, name!!, totalAmount!!,discountedAmount!!,areainSquareFoot!!,pricePerSquareFoot!!,pricePerSquareFootDiscount!!))
+            loadFragment(FullPaymentFragment.newInstance(
+                propid!!,
+                userid!!, description!!, name!!, totalAmount!!,discountedAmount!!,areainSquareFoot!!,pricePerSquareFoot!!,pricePerSquareFootDiscount!!))
 
             binding.viewbid3.visibility = View.VISIBLE
             binding.viewbid4.visibility = View.GONE
@@ -48,7 +50,8 @@ class BuyNowActivity : AppCompatActivity() {
 
         }
         binding.tvUpcomingBid.setOnClickListener {
-            loadFragment(InstallmentPlanFragment.newInstance(description!!,name!!,downPayment!!,quarterPayment!!,totalAmount!!,areainSquareFoot!!,discountedAmount!!,
+            loadFragment(InstallmentPlanFragment.newInstance(propid!!,
+                userid!!,description!!,name!!,downPayment!!,quarterPayment!!,totalAmount!!,areainSquareFoot!!,discountedAmount!!,
                 pricePerSquareFoot!!,pricePerSquareFootDiscount!!))
             binding.viewbid3.visibility = View.GONE
             binding.viewbid4.visibility = View.VISIBLE
@@ -66,7 +69,7 @@ class BuyNowActivity : AppCompatActivity() {
         buynowFragmentManager = supportFragmentManager
 
         val intent = intent
-        id = intent.getStringExtra("id")
+        propid = intent.getIntExtra("id",0)
         name = intent.getStringExtra("name")
         description = intent.getStringExtra("description")
         pricePerSquareFoot = intent.getStringExtra("pricePerSquareFoot")
@@ -82,7 +85,8 @@ class BuyNowActivity : AppCompatActivity() {
         projectName = intent.getStringExtra("projectName")
         projectCompany = intent.getStringExtra("projectCompany")
         userid = intent.getStringExtra("userid")
-        loadFragment(FullPaymentFragment.newInstance(description!!, name!!,totalAmount!!, discountedAmount!!,areainSquareFoot!!,pricePerSquareFoot!!,pricePerSquareFootDiscount!!))
+
+        loadFragment(FullPaymentFragment.newInstance(propid!!,userid!!,description!!, name!!,totalAmount!!, discountedAmount!!,areainSquareFoot!!,pricePerSquareFoot!!,pricePerSquareFootDiscount!!))
 
         val imageList = ArrayList<SlideModel>()
         imageList.add(SlideModel(R.drawable.apparmentcurrent))

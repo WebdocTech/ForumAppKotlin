@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.installations.FirebaseInstallations
 import com.squareup.picasso.Picasso
 import com.tangxiaolv.telegramgallery.GalleryActivity
 import com.tangxiaolv.telegramgallery.GalleryConfig
@@ -58,10 +59,9 @@ class RegistrationActivity : AppCompatActivity() {
         registrationViewModel!!.LDRegistration().observe(this) { response ->
             if (response != null) {
                 if (response.result!!.responseCode.equals("0000")) {
-                    Toast.makeText(this@RegistrationActivity, "Customer Added", Toast.LENGTH_SHORT)
-                        .show()
+
                     edit.putBoolean(PreferencesNew.KEY_IS_LOGIN, true)
-                    Log.i("sdsd", prefs.getBoolean(PreferencesNew.KEY_IS_LOGIN, true).toString())
+                   // Log.i("sdsd", prefs.getBoolean(PreferencesNew.KEY_IS_LOGIN, true).toString())
                     edit.putBoolean(PreferencesNew.KEY_IS_Register, true)
                     edit.putString(PreferencesNew.KEY_USER_NAME, userName)
                     edit.putString(PreferencesNew.KEY_USER_PHONE, phoneNo)
@@ -69,7 +69,8 @@ class RegistrationActivity : AppCompatActivity() {
                     edit.putString(PreferencesNew.KEY_USER_IMAGE, imageLink)
                     edit.commit()
                     edit.apply()
-
+                    Toast.makeText(this@RegistrationActivity, "Registered Successfully", Toast.LENGTH_SHORT)
+                        .show()
                     Global.utils!!.hideCustomLoadingDialog()
                     startActivity(Intent(this@RegistrationActivity, MainActivity::class.java))
                     finishAffinity()
@@ -97,7 +98,8 @@ class RegistrationActivity : AppCompatActivity() {
             userType = "Mobile"
             userPin = binding.edPassword.getText().toString()
             userConfirmPin = binding.edConfirmPassword.getText().toString()
-            //  deviceToken = FirebaseInstanceId.getInstance().getToken()
+           //   deviceToken = FirebaseInstanceId.getInstance().getToken()
+
             val strPass1: String = binding.edPassword.getText().toString()
             val strPass2: String = binding.edConfirmPassword.getText().toString()
             if (userName!!.isEmpty()) {

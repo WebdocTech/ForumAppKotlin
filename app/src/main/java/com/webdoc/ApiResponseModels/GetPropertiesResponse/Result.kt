@@ -72,6 +72,10 @@ class Result {
     @Expose
     var projectCompany: String? = null
 
+    @SerializedName("status")
+    @Expose
+    var status: String? = null
+
     @SerializedName("propertyImageList")
     @Expose
     var propertyImageList: List<Any>? = null

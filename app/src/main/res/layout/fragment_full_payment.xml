@@ -1,7 +1,4 @@
-
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/btn_full_proceed"
+        app:layout_constraintBottom_toTopOf="@+id/btn_fullpayment_proceed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -65,9 +62,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:background="#ffffff"
-
-                    >
+                    android:background="#ffffff">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -104,8 +99,6 @@
                         android:text="Pre-Launch\nOffer"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
-
-
 
 
                 </TableRow>
@@ -154,8 +147,6 @@
                         android:textColor="@color/white" />
 
 
-
-
                 </TableRow>
 
                 <TableRow
@@ -201,15 +192,6 @@
                         android:textColor="@color/white" />
 
 
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_column="2"
-                        android:layout_margin="1dp"
-                        android:background="#000"
-                        android:gravity="center"
-                        android:textColor="@color/white" />
                 </TableRow>
             </TableLayout>
 
@@ -255,10 +237,12 @@
 
 
     <Button
-        android:id="@+id/btn_full_proceed"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_fullpayment_proceed"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/button_gradient"
         android:drawableRight="@drawable/ic_arrow_right"

@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 
-class SnapHelperOneByOne : LinearSnapHelper() {
+    class SnapHelperOneByOne : LinearSnapHelper() {
     override fun findTargetSnapPosition(
         layoutManager: RecyclerView.LayoutManager,
         velocityX: Int,

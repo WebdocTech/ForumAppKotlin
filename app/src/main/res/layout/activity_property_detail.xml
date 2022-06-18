@@ -301,6 +301,7 @@
                 android:text="Description"
                 android:textColor="@color/white"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/tv_description"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view_buttons" />
@@ -313,6 +314,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="
 Awan Real Estate and Builders (Titanium Agency) Offering Best
 Investment Opportunities From Last 10 Years In Dynamic
@@ -320,11 +322,153 @@ Real Estate Market to its Valued Client Base Nationwide
 and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
  \n(Co-operative Housing Society)"
                 android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/tv_areainlenth"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_des" />
 
+            <TextView
+                android:id="@+id/tv_areainlenth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Area in Length"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tv_areainlength"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_description" />
 
+
+            <TextView
+                android:id="@+id/tv_areainlength"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="
+Awan Real Estate and Builders (Titanium Agency) Offering Best
+Investment Opportunities From Last 10 Years In Dynamic
+Real Estate Market to its Valued Client Base Nationwide
+and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
+ \n(Co-operative Housing Society)"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/tv_projectNam"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_areainlenth" />
+
+            <TextView
+                android:id="@+id/tv_projectNam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Project Name"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tv_projectName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_areainlength" />
+
+
+            <TextView
+                android:id="@+id/tv_projectName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="
+Awan Real Estate and Builders (Titanium Agency) Offering Best
+Investment Opportunities From Last 10 Years In Dynamic
+Real Estate Market to its Valued Client Base Nationwide
+and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
+ \n(Co-operative Housing Society)"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/tv_projectCompny"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_projectNam" />
+
+            <TextView
+                android:id="@+id/tv_projectCompny"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Project Company"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tv_projectCompany"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_projectName" />
+
+
+            <TextView
+                android:id="@+id/tv_projectCompany"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="
+Awan Real Estate and Builders (Titanium Agency) Offering Best
+Investment Opportunities From Last 10 Years In Dynamic
+Real Estate Market to its Valued Client Base Nationwide
+and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
+ \n(Co-operative Housing Society)"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/tv_stats"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_projectCompny" />
+
+            <TextView
+                android:id="@+id/tv_stats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Status"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tv_status"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_projectCompany" />
+
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="
+Awan Real Estate and Builders (Titanium Agency) Offering Best
+Investment Opportunities From Last 10 Years In Dynamic
+Real Estate Market to its Valued Client Base Nationwide
+and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
+ \n(Co-operative Housing Society)"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_stats" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
@@ -334,8 +478,8 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
 
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -346,7 +490,9 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
             android:id="@+id/cl_whatsapp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/grey_border_home"
+            android:padding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cl_contact"
             app:layout_constraintStart_toStartOf="parent"
@@ -354,11 +500,12 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
 
             <ImageView
                 android:id="@+id/iv_whatsapp"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
                 android:src="@drawable/whatsapp"
+
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tv_whatsapp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -366,11 +513,11 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
                 android:id="@+id/tv_whatsapp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
                 android:gravity="center"
                 android:src="@drawable/ic_contact"
                 android:text="WhatsApp"
                 android:textColor="@color/white"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/iv_whatsapp"
@@ -381,8 +528,8 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
             android:id="@+id/cl_contact"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:background="@drawable/grey_border_home"
+            android:padding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cl_buy"
             app:layout_constraintStart_toEndOf="@+id/cl_whatsapp"
@@ -390,11 +537,11 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
 
             <ImageView
                 android:id="@+id/iv_contact"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
                 android:src="@drawable/phone"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tv_contact"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -402,9 +549,11 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
                 android:id="@+id/tv_contact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
                 android:src="@drawable/ic_contact"
                 android:text="Call"
                 android:textColor="@color/white"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/iv_contact"
@@ -414,8 +563,9 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_buy"
             android:layout_width="0dp"
-
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cl_contact"
@@ -423,8 +573,8 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
 
             <Button
                 android:id="@+id/btn_buyNow"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
                 android:background="@drawable/button_gradient"
                 android:text="Buy Now"
                 app:layout_constraintBottom_toBottomOf="parent"

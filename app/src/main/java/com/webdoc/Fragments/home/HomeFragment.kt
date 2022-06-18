@@ -1,14 +1,19 @@
 package com.webdoc.Fragments.home
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -21,6 +26,7 @@ import com.webdoc.Adapters.GetPropertiesAdapter
 import com.webdoc.Adapters.MarlaCategoriesAdapter
 import com.webdoc.Adapters.PriceCategoriesAdapter
 import com.webdoc.Essentials.Global
+import com.webdoc.Essentials.PreferencesNew
 import com.webdoc.Fragments.home.ViewModels.GetPropertiesViewModel
 import com.webdoc.ModelClasses.MarlaCategories
 import com.webdoc.ModelClasses.PriceCategories
@@ -31,7 +37,8 @@ import com.webdoc.theforum.databinding.FragmentHomeBinding
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     var getPropertiesViewModel: GetPropertiesViewModel? = null
-    var check = 1
+    private lateinit var prefs: SharedPreferences
+    private var contxt: Context? = null
     var city = ""
     var arrayOfCities = arrayOf(
         "Select City",
@@ -55,11 +62,10 @@ class HomeFragment : Fragment() {
     var marlaCatId = arrayOf(
         "01", "02", "03", "04"
     )
-    var userid: String = ""
     private var databaseReference: DatabaseReference? = null
 
     lateinit var edit: SharedPreferences.Editor
-    var username: String = ""
+    private var userid: String = ""
     var useremail: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,6 +80,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+        contxt = container!!.getContext()
         initViews()
         clickListeners()
         observers()
@@ -86,9 +93,9 @@ class HomeFragment : Fragment() {
                 if (response.result!=null) {
                   //  cartResponse = response
 
-                    val layoutManager = LinearLayoutManager(activity as MainActivity)
+                    val layoutManager = LinearLayoutManager(contxt)
                     binding.rvHotSelling.setLayoutManager(layoutManager)
-                   val getPropertyAdapter = GetPropertiesAdapter(activity as MainActivity, response)
+                   val getPropertyAdapter = GetPropertiesAdapter(contxt!!, response)
                     binding.rvHotSelling.setAdapter(getPropertyAdapter)
                     binding.tvNoItem.visibility = View.GONE
                     Global.utils!!.hideCustomLoadingDialog()
@@ -110,9 +117,18 @@ class HomeFragment : Fragment() {
     private fun initViews() {
         pricePopulateRecycler()
         marlaPopulateRecycler()
+        prefs = (activity as MainActivity).getSharedPreferences("abc", Context.MODE_PRIVATE)
+        edit = prefs.edit()
+        userid = prefs.getString(PreferencesNew.KEY_ApplicationUserId, "").toString()
+      //  Global.id = userid
         getPropertiesViewModel = ViewModelProvider(this).get(GetPropertiesViewModel::class.java)
-        Global.utils!!.showCustomLoadingDialog(activity as MainActivity)
-        getPropertiesViewModel!!.getPropertiesAPi()
+      if ((activity as MainActivity).isOnline(contxt!!))  {
+            Global.utils!!.showCustomLoadingDialog(activity as MainActivity)
+            getPropertiesViewModel!!.getPropertiesAPi()
+        }else{
+          Toast.makeText(contxt, "Please Check Internet", Toast.LENGTH_SHORT).show()
+        }
+
      //   hotSellingPopulateRecycler()
 
     }
@@ -125,7 +141,6 @@ class HomeFragment : Fragment() {
             val intent = Intent(activity as MainActivity, PaymentMethodsActivity::class.java)
             startActivity(intent)
 
-
         }
 //        binding.tvForSale.setOnClickListener {
 //            binding.view1.visibility = View.VISIBLE
@@ -136,14 +151,37 @@ class HomeFragment : Fragment() {
 //            binding.view1.visibility = View.GONE
 //            binding.view2.visibility = View.VISIBLE
 //        }
+        binding.clAll.setOnClickListener {
+            binding.view15.visibility = View.VISIBLE
+            binding.view5.visibility = View.GONE
+            binding.view6.visibility = View.GONE
+            binding.view7.visibility = View.GONE
 
+            binding.ivAll.setColorFilter(Color.YELLOW)
+            binding.ivAprtmnt.setColorFilter(Color.WHITE)
+            binding.ivPlt.setColorFilter(Color.WHITE)
+            binding.ivComrcial.setColorFilter(Color.WHITE)
+            binding.tvAll.setTextColor(Color.YELLOW)
+            binding.tvApartment.setTextColor(Color.WHITE)
+            binding.tvPlot.setTextColor(Color.WHITE)
+            binding.tvCommercial.setTextColor(Color.WHITE)
+
+            //  binding.tvApartment.leftDrawable(R.drawable.ic_apartment, colorRes = R.color.darkyellow)
+        }
         binding.clAppartment.setOnClickListener {
+            binding.view15.visibility = View.GONE
             binding.view5.visibility = View.VISIBLE
             binding.view6.visibility = View.GONE
             binding.view7.visibility = View.GONE
+
+            binding.ivAll.setColorFilter(Color.WHITE)
+
             binding.ivAprtmnt.setColorFilter(Color.YELLOW)
             binding.ivPlt.setColorFilter(Color.WHITE)
             binding.ivComrcial.setColorFilter(Color.WHITE)
+
+            binding.tvAll.setTextColor(Color.WHITE)
+
             binding.tvApartment.setTextColor(Color.YELLOW)
             binding.tvPlot.setTextColor(Color.WHITE)
             binding.tvCommercial.setTextColor(Color.WHITE)
@@ -152,6 +190,9 @@ class HomeFragment : Fragment() {
         }
 
         binding.clPlot.setOnClickListener {
+            binding.view15.visibility = View.GONE
+            binding.ivAll.setColorFilter(Color.WHITE)
+            binding.tvAll.setTextColor(Color.WHITE)
             binding.view5.visibility = View.GONE
             binding.view6.visibility = View.VISIBLE
             binding.view7.visibility = View.GONE
@@ -164,6 +205,9 @@ class HomeFragment : Fragment() {
         }
 
         binding.clComrcial.setOnClickListener {
+            binding.view15.visibility = View.GONE
+            binding.ivAll.setColorFilter(Color.WHITE)
+            binding.tvAll.setTextColor(Color.WHITE)
             binding.view5.visibility = View.GONE
             binding.view6.visibility = View.GONE
             binding.view7.visibility = View.VISIBLE
@@ -207,7 +251,7 @@ class HomeFragment : Fragment() {
         val layoutManager: RecyclerView.LayoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvMarlaCat.setLayoutManager(layoutManager)
-        val adapterMarla = MarlaCategoriesAdapter(activity as AppCompatActivity, arrayListMarla)
+        val adapterMarla = MarlaCategoriesAdapter(contxt!!, arrayListMarla)
         binding.rvMarlaCat.setAdapter(adapterMarla)
     }
 
@@ -257,6 +301,7 @@ class HomeFragment : Fragment() {
                  }
              })
      }*/
+
 }
 
 

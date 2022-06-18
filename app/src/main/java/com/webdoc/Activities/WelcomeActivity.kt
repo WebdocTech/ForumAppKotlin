@@ -50,6 +50,7 @@ class WelcomeActivity : AppCompatActivity() {
         if (userLogin) {
             val intent = Intent(this@WelcomeActivity, MainActivity::class.java)
             startActivity(intent)
+            finishAffinity()
         }
     //    val fireBaseUser = fireBaseAuth.currentUser
 //        if (fireBaseUser != null && userLogin) {

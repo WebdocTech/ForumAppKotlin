@@ -5,10 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.RecyclerView
+import com.takusemba.multisnaprecyclerview.MultiSnapHelper
+import com.takusemba.multisnaprecyclerview.SnapGravity
 import com.webdoc.Activities.MainActivity
 import com.webdoc.Adapters.VideosAdapter
 import com.webdoc.Essentials.Global
@@ -37,6 +41,11 @@ class VideoFragment : Fragment() {
 
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).supportActionBar?.title = "Video"
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,16 +54,27 @@ class VideoFragment : Fragment() {
         binding = FragmentVideoBinding.inflate(inflater, container, false)
 
         binding = FragmentVideoBinding.inflate(inflater, container, false)
-
+        Global.activityy = activity as MainActivity
         biddingFragmentManager = (activity as MainActivity).supportFragmentManager
-        binding.rv.setHasFixedSize(true)
-        val mLayoutManager = LinearLayoutManager(activity as MainActivity)
-        mLayoutManager.reverseLayout = true
-        mLayoutManager.stackFromEnd = true
+        // binding.rv.setHasFixedSize(true)
+        val mLayoutManager: RecyclerView.LayoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        //   val mLayoutManager = LinearLayoutManager(activity as MainActivity)
+//        mLayoutManager.setReverseLayout(true);
+//        mLayoutManager.setStackFromEnd(true);
         binding.rv.layoutManager = mLayoutManager
         //      loadFragment(FullPaymentFragment())
+        if ((activity as MainActivity).isOnline(activity as MainActivity)) {
+            Global.utils!!.showCustomLoadingDialog(activity as MainActivity)
+            // binding.shimmerLoader.progress
+            getVideosData();
+        } else {
+            Toast.makeText(
+                activity as MainActivity, "Check Internet",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
 
-        getVideosData();
         return binding.root
     }
 
@@ -91,13 +111,19 @@ class VideoFragment : Fragment() {
                         videosList.add(i)
                     }
 
-                    binding.shimmerLoader.visibility = View.GONE
+                    // binding.shimmerLoader.visibility = View.GONE
                     Global.videoList = videosList
                     videosAdapter = VideosAdapter(activity as MainActivity, videosList)
                     binding.rv.adapter = videosAdapter
                     videosAdapter!!.notifyDataSetChanged()
-                    val linearSnapHelper: LinearSnapHelper = SnapHelperOneByOne()
-                    linearSnapHelper.attachToRecyclerView(binding.rv)
+
+                    val multiSnapHelper = MultiSnapHelper(
+                        SnapGravity.START, 1,
+                        50f
+                    )
+                    multiSnapHelper.attachToRecyclerView(binding.rv)
+
+                    Global.utils!!.hideCustomLoadingDialog()
                 }
                 // MLDGetProperties.postValue(getPropertiesResponse)
 
@@ -105,16 +131,17 @@ class VideoFragment : Fragment() {
                 if (!response.isSuccessful()) {
                     Toast.makeText(
                         activity as MainActivity,
-                        response.body().toString() +"ddsdfdsfsd",
+                        response.body().toString() + "ddsdfdsfsd",
                         Toast.LENGTH_SHORT
                     )
                         .show()
+
                     return
                 }
             }
 
             override fun onFailure(call: Call<VideosResonse>, t: Throwable) {
-                TODO("Not yet implemented")
+
             }
 
 

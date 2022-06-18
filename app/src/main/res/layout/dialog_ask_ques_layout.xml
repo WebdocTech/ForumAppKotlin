@@ -44,6 +44,7 @@ we will answer your queries within 24 hours"
             android:textColor="@color/white" />
 
         <EditText
+            android:id="@+id/edt_QA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ask_question_background"

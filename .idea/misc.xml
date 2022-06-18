@@ -58,7 +58,9 @@
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/grey_border.xml" value="0.142" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/grey_border_home.xml" value="0.142" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/ic_arrow_right.xml" value="0.11" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/ic_select_all.xml" value="0.1585" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/installment_shape.xml" value="0.11" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/payment_borders.xml" value="0.1565" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/status_shape.xml" value="0.1585" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/welcome_loginbtn_shape.xml" value="0.11" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/drawable/welcome_signupbtn_shape.xml" value="0.11" />
@@ -66,19 +68,24 @@
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_buy_now.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_get_number.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_login.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_my_prop_detail.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_payment_methods.xml" value="0.2" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_property_detail.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_registration.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_stripe.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/activity_welcome.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/dialog_ask_ques_layout.xml" value="0.22" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/dialog_exit_app.xml" value="0.1921875" />
-        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_account.xml" value="0.1" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_account.xml" value="0.22" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_add.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_buy_now.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_full_payment.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_home.xml" value="0.1765625" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_installment_plan.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_my_property.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_projects.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_qa.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_video.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/fragment_view_profile.xml" value="0.1" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_current_bidding.xml" value="0.1921875" />
@@ -87,14 +94,19 @@
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_installment_plan.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_my_property.xml" value="0.33" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_my_property_payment.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_price_category.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_projects.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_questions.xml" value="0.14375" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/model_recomended.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/payment_item.xml" value="0.1" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/progressbar.xml" value="0.1921875" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/seekbar.xml" value="0.18" />
+        <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/layout/video_item_view.xml" value="0.1921875" />
         <entry key="..\:/WebDoc Workspace/ForumAppKotlin/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1921875" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

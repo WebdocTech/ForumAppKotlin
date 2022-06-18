@@ -33,8 +33,8 @@ class AccountFragment : Fragment() {
     var imageUser: String = ""
 
 
-    lateinit var prefs: SharedPreferences
-    lateinit var edit: SharedPreferences.Editor
+   private lateinit var prefs: SharedPreferences
+   private lateinit var edit: SharedPreferences.Editor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +67,10 @@ class AccountFragment : Fragment() {
         if (!username.equals("")) {
             binding.tvViewProfile.visibility = View.VISIBLE
             binding.tvUserName.setText(username)
-            Picasso.get().load(imageUser).into(binding.ivUser)
+            if(!imageUser.equals("")){
+                Picasso.get().load(imageUser).into(binding.ivUser)
+            }
+
         } else {
             binding.btnSignOut.text = "Sign In"
             binding.tvViewProfile.visibility = View.GONE
@@ -87,6 +90,7 @@ class AccountFragment : Fragment() {
             edit.clear()
             edit.remove("")
             edit.apply()
+            (activity as MainActivity).finish()
         }
         if (!username.equals("")) {
             binding.clTopProfile.setOnClickListener {

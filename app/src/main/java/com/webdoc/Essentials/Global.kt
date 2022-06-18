@@ -6,6 +6,7 @@ import android.net.Uri
 import android.util.Base64
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import com.webdoc.Activities.MainActivity
 import com.webdoc.ApiResponseModels.MyPropertyResponse.MyPropertyResponse
 import com.webdoc.ApiResponseModels.MyPropertyResponse.PaymentDetail
 import com.webdoc.Fragments.video.VideoResponse.Video
@@ -42,13 +43,17 @@ public class Global : Application() {
             }
             return encoded
         }
-
+        lateinit var activityy:Activity
+        var id: Int = 0
+        var userid: String = ""
         var installmentAmount: String = ""
+        var installmentNo: String = ""
         var propertyName: String = ""
         var totalAmount: String = ""
         var downPayment: String = ""
-        var noOfInstallment: String = ""
+        var modeOfPayment: String = ""
         var paidAmount: String = ""
+        var answerStatus: String = ""
         var sellType: String = ""
         var videoList: ArrayList<Video> = ArrayList()
         var videoResp: VideosResonse = VideosResonse()

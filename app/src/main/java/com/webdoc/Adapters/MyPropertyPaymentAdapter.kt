@@ -15,10 +15,10 @@ import java.text.DecimalFormat
 
 class MyPropertyPaymentAdapter(var context: Context, var myPropertyResponse: MyPropertyResponse) :
     RecyclerView.Adapter<MyPropertyPaymentAdapter.MyViewHolder>() {
-
+    var debit= ""
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view: View = LayoutInflater.from(parent.context)
-                .inflate(R.layout.model_my_property_payment, parent, false)
+            .inflate(R.layout.model_my_property_payment, parent, false)
         return MyViewHolder(view)
     }
 
@@ -35,6 +35,7 @@ class MyPropertyPaymentAdapter(var context: Context, var myPropertyResponse: MyP
         val datelist: ArrayList<String> = ArrayList()
         val remarkslist: ArrayList<String> = ArrayList()
         val balancelist: ArrayList<String> = ArrayList()
+     //   val paytype = myPropertyResponse.result.myPropertyDetails.get(position).sellType
 
 
         for (i in myPropertyResponse.result.myPropertyDetails) {
@@ -59,21 +60,39 @@ class MyPropertyPaymentAdapter(var context: Context, var myPropertyResponse: MyP
                 datelist.add(date)
                 remarkslist.add(remarks)
                 balancelist.add(balance)
+
             }
         }
 
+    val formatter = DecimalFormat("#,###,###")
+    val debitformat: String =
+        formatter.format(Global.propDetailList.get(position).debit.toInt())
+    // val modePayformat: String = formatter.format(Global.propDetailList.get(position).modeOfPayment.to)
+    //  val balanceformat: String = formatter.format(Global.propDetailList.get(position).balance.toInt())
 
-        val formatter = DecimalFormat("#,###,###")
-        val debitformat: String = formatter.format(Global.propDetailList.get(position).debit.toInt())
-        val creditformat: String = formatter.format(Global.propDetailList.get(position).credit.toInt())
-        val balanceformat: String = formatter.format(Global.propDetailList.get(position).balance.toInt())
+    holder.tv_pay_debit!!.setText(debitformat)
 
-        holder.tv_pay_debit!!.setText(debitformat)
-        holder.tv_pay_credit!!.setText(creditformat)
-        holder.tv_pay_date!!.setText(Global.propDetailList.get(position).date)
-        holder.tv_pay_balance!!.setText(balanceformat)
-        holder.tv_pay_transId!!.setText(Global.propDetailList.get(position).transectionId)
-        holder.tv_payment_remarks!!.setText(Global.propDetailList.get(position).remarks)
+
+    // val modePayformat: String = formatter.format(Global.propDetailList.get(position).modeOfPayment.to)
+    //  val balanceformat: String = formatter.format(Global.propDetailList.get(position).balance.toInt())
+
+ //   holder.tv_pay_debit!!.setText(debitformat)
+
+    holder.tv_pay_mode!!.setText(Global.propDetailList.get(position).modeOfPayment)
+    holder.tv_pay_date!!.setText(Global.propDetailList.get(position).date)
+        if(position==0){
+            holder.tv_ins_num!!.setText("-")
+            holder.tv_pay_mode!!.setText("Down\nPayment")
+        }else{
+            holder.tv_pay_mode!!.setText(Global.propDetailList.get(position).modeOfPayment)
+            holder.tv_ins_num!!.setText((position).toString())
+        }
+
+    //   holder.tv_pay_balance!!.setText(balanceformat)
+    holder.tv_pay_transId!!.setText(Global.propDetailList.get(position).transectionId)
+    holder.tv_payment_remarks!!.setText(Global.propDetailList.get(position).remarks)
+
+
 
 
     }
@@ -85,19 +104,22 @@ class MyPropertyPaymentAdapter(var context: Context, var myPropertyResponse: MyP
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var tv_pay_debit: TextView? = null
-        var tv_pay_credit: TextView? = null
+        var tv_pay_mode: TextView? = null
         var tv_pay_date: TextView? = null
-        var tv_pay_balance: TextView? = null
+        var tv_ins_num: TextView? = null
+
+        // var tv_pay_balance: TextView? = null
         var tv_pay_transId: TextView? = null
         var tv_payment_remarks: TextView? = null
 
         init {
             tv_pay_debit = itemView.findViewById(R.id.tv_pay_debit)
-            tv_pay_credit = itemView.findViewById(R.id.tv_pay_credit)
+            tv_pay_mode = itemView.findViewById(R.id.tv_pay_mode)
             tv_pay_date = itemView.findViewById(R.id.tv_pay_date)
-            tv_pay_balance = itemView.findViewById(R.id.tv_pay_balance)
+            // tv_pay_balance = itemView.findViewById(R.id.tv_pay_balance)
             tv_pay_transId = itemView.findViewById(R.id.tv_pay_transId)
             tv_payment_remarks = itemView.findViewById(R.id.tv_payment_remarks)
+            tv_ins_num = itemView.findViewById(R.id.tv_ins_num)
 
             //            btnAddToCart = itemView.findViewById(R.id.btnAddToCart);
         }

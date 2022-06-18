@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "732071844449",
+    "firebase_url": "https://the-forum-30ac5-default-rtdb.firebaseio.com",
     "project_id": "the-forum-30ac5",
     "storage_bucket": "the-forum-30ac5.appspot.com"
   },
@@ -14,7 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "732071844449-i060tsvg7a579qvtc1o22o9hi16v5brm.apps.googleusercontent.com",
+          "client_id": "732071844449-rdgd2lipsr63i1btris3l5ehqvj45tag.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.webdoc.theforum",

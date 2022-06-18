@@ -3,10 +3,10 @@ package com.webdoc.Fragments.myproperty
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -26,6 +26,7 @@ class MyPropertyFragment : Fragment() {
     private lateinit var edit: SharedPreferences.Editor
     var myPropertyViewModel: MyPropertyViewModel? = null
     private var userid: String = ""
+    var contxt: Context? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -37,6 +38,7 @@ class MyPropertyFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMyPropertyBinding.inflate(inflater, container, false)
+        contxt= container!!.getContext()
         initViews()
         clickListerners()
         observers()
@@ -52,9 +54,10 @@ class MyPropertyFragment : Fragment() {
                 if (response.result!!.responseCode.equals("0000")) {
 
                     Global.mypropResp = response
-                    val layoutManager = LinearLayoutManager(activity as MainActivity)
+
+                    val layoutManager = LinearLayoutManager(contxt)
                     binding.rvMyProperty.setLayoutManager(layoutManager)
-                    val getPropertyAdapter = MyPropertyAdapter(activity as MainActivity, response)
+                    val getPropertyAdapter = MyPropertyAdapter(contxt!!, response)
                     binding.rvMyProperty.setAdapter(getPropertyAdapter)
                     binding.tvMyPropNoItem.visibility = View.GONE
                     Global.utils!!.hideCustomLoadingDialog()
@@ -74,14 +77,23 @@ class MyPropertyFragment : Fragment() {
 
 
     private fun initViews() {
+
         myPropertyViewModel = ViewModelProvider(this).get(MyPropertyViewModel::class.java)
 
         prefs = (activity as MainActivity).getSharedPreferences("abc", Context.MODE_PRIVATE)
         edit = prefs.edit()
 
         userid = prefs.getString(PreferencesNew.KEY_ApplicationUserId, "").toString()
-        Global.utils!!.showCustomLoadingDialog(activity as MainActivity)
-        myPropertyViewModel!!.calMyPropertyApi(userid)
+        if((activity as MainActivity).isOnline(activity as MainActivity)){
+            Global.utils!!.showCustomLoadingDialog(activity as MainActivity)
+            myPropertyViewModel!!.calMyPropertyApi(userid)
+        }else{
+            Toast.makeText(
+                activity as MainActivity, "Check Internet",
+                Toast.LENGTH_SHORT
+            ).show();
+        }
+
         //    projectsPopulateRecycler()
     }
 

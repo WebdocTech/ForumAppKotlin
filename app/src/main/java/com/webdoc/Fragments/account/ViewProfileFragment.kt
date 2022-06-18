@@ -55,7 +55,10 @@ class ViewProfileFragment : Fragment() {
             phoneNo = args.getString("phone").toString()
               image = args.getString("profileImage").toString()
             binding.tvProfileName.setText(name)
-              Picasso.get().load(image).into(binding.ivShowprofile)
+            if(!image.equals("")){
+                Picasso.get().load(image).into(binding.ivShowprofile)
+            }
+
             binding.tvEmail.setText(email)
             binding.tvNumber.setText(phoneNo)
         }

@@ -24,17 +24,35 @@
             android:background="@drawable/grey_border_home">
 
             <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_question"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="26dp"
                 android:elevation="15dp"
                 android:text="1. Why Are You Selling?"
                 android:textColor="@color/white"
                 android:textSize="16sp"
+
                 android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/tv_status"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:elevation="15dp"
+                android:text="Status"
+                android:textColor="#A39D9D"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_question"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
@@ -43,16 +61,29 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:background="#4F4E4E"
+                app:layout_constraintBottom_toTopOf="@+id/tv_answer"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_date_question" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/tv_date_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:elevation="15dp"
+                android:text="Date"
+                android:textColor="#A39D9D"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_question" />
+
+            <TextView
+                android:id="@+id/tv_answer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
                 android:text="There are many reasons why people move, including job relocation, desire to get
@@ -62,12 +93,28 @@ truthful answer, asking why the seller is moving can be helpful in determining
 how much room there is for negotiating.\n \nDepending on the reason for moving, the seller may be willing to accept a lower
 offer if it means they can be out of the home faster. Of course, if the seller is in
  no hurry to sell, there may be little room for negotiation."
-                android:textColor="#A39D9D"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view_ques" />
+
+
+            <TextView
+                android:id="@+id/tv_date_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:elevation="15dp"
+                android:text="Date"
+                android:textColor="#A39D9D"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_answer" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

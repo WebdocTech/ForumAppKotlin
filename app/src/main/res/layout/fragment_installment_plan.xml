@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/btn_ins_proceed"
+        app:layout_constraintBottom_toTopOf="@+id/btn_installment_proceed"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,7 +60,6 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:background="#ffffff"
-
                     >
 
                     <TextView
@@ -70,7 +69,8 @@
                         android:layout_margin="1dp"
                         android:background="#000"
                         android:gravity="center"
-                        android:padding="5dp"
+                        android:padding="4dp"
+                        android:textSize="12sp"
                         android:text="Area"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
@@ -81,8 +81,9 @@
                         android:layout_column="1"
                         android:layout_margin="1dp"
                         android:background="#000"
+                        android:textSize="12sp"
                         android:gravity="center"
-                        android:padding="5dp"
+                        android:padding="4dp"
                         android:text="Price\nRs./sq"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
@@ -93,8 +94,9 @@
                         android:layout_column="2"
                         android:layout_margin="1dp"
                         android:background="#000"
+                        android:textSize="12sp"
                         android:gravity="center"
-                        android:padding="5dp"
+                        android:padding="4dp"
                         android:text="Pre-Launch\nOffer"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
@@ -105,20 +107,22 @@
                         android:layout_column="3"
                         android:layout_margin="1dp"
                         android:background="#000"
+                        android:textSize="12sp"
                         android:gravity="center"
-                        android:padding="5dp"
+                        android:padding="4dp"
                         android:text="Down\nPayment"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_column="4"
                         android:layout_margin="1dp"
                         android:background="#000"
                         android:gravity="center"
-                        android:padding="5dp"
+                        android:padding="4dp"
+                        android:textSize="12sp"
                         android:text="Quarterly\nInstallment"
                         android:textColor="@color/white"
                         android:textStyle="bold" />
@@ -138,8 +142,9 @@
                         android:layout_column="0"
                         android:layout_margin="1dp"
                         android:background="#000"
+                        android:textSize="12sp"
                         android:gravity="center"
-                        android:padding="5dp"
+                        android:padding="4dp"
                         android:text=" Text"
                         android:textColor="@color/white" />
 
@@ -150,8 +155,9 @@
                         android:layout_column="1"
                         android:layout_margin="1dp"
                         android:background="#000"
+                        android:textSize="12sp"
                         android:gravity="center"
-                        android:padding="5dp"
+                        android:padding="4dp"
                         android:text=" Text"
                         android:textColor="@color/white" />
 
@@ -162,8 +168,9 @@
                         android:layout_column="2"
                         android:layout_margin="1dp"
                         android:background="#000"
+                        android:textSize="12sp"
                         android:gravity="center"
-                        android:padding="5dp"
+                        android:padding="4dp"
                         android:text=" Text"
                         android:textColor="@color/white" />
 
@@ -174,8 +181,9 @@
                         android:layout_column="3"
                         android:layout_margin="1dp"
                         android:background="#000"
+                        android:textSize="12sp"
                         android:gravity="center"
-                        android:padding="5dp"
+                        android:padding="4dp"
                         android:text=" Text"
                         android:textColor="@color/white" />
 
@@ -186,8 +194,9 @@
                         android:layout_column="4"
                         android:layout_margin="1dp"
                         android:background="#000"
+                        android:textSize="12sp"
                         android:gravity="center"
-                        android:padding="5dp"
+                        android:padding="4dp"
                         android:text=" Text"
                         android:textColor="@color/white" />
                 </TableRow>
@@ -195,7 +204,6 @@
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
-
                     android:layout_weight="1"
                     android:background="#ffffff">
 
@@ -205,9 +213,10 @@
                         android:layout_height="match_parent"
                         android:layout_column="0"
                         android:layout_margin="1dp"
+                        android:textSize="12sp"
                         android:background="#000"
                         android:gravity="center"
-
+                        android:padding="4dp"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -217,8 +226,9 @@
                         android:layout_column="1"
                         android:layout_margin="1dp"
                         android:background="#000"
+                        android:textSize="12sp"
                         android:gravity="center"
-                        android:padding="5dp"
+                        android:padding="4dp"
                         android:text=" Text"
                         android:textColor="@color/white" />
 
@@ -228,9 +238,10 @@
                         android:layout_height="match_parent"
                         android:layout_column="2"
                         android:layout_margin="1dp"
+                        android:textSize="12sp"
                         android:background="#000"
                         android:gravity="center"
-                        android:padding="5dp"
+                        android:padding="4dp"
                         android:text=" Text"
                         android:textColor="@color/white" />
 
@@ -240,9 +251,10 @@
                         android:layout_height="match_parent"
                         android:layout_column="3"
                         android:layout_margin="1dp"
+                        android:textSize="12sp"
                         android:background="#000"
                         android:gravity="center"
-
+                        android:padding="4dp"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -250,8 +262,10 @@
                         android:layout_height="match_parent"
                         android:layout_column="4"
                         android:layout_margin="1dp"
+                        android:textSize="12sp"
                         android:background="#000"
                         android:gravity="center"
+                        android:padding="4dp"
                         android:textColor="@color/white" />
                 </TableRow>
             </TableLayout>
@@ -262,24 +276,43 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="Select Installment To Payment"
+                android:text="Select Installment To Pay"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/seek_bar"
+                app:layout_constraintBottom_toTopOf="@+id/horizont_number_picker"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tbl_ll" />
 
-
-            <com.zhouyou.view.seekbar.SignSeekBar
-                android:id="@+id/seek_bar"
-                android:layout_width="match_parent"
+            <com.shawnlin.numberpicker.NumberPicker
+                android:id="@+id/horizont_number_picker"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/cv_installment"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/tv_yourInstallment"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_selectIns"
+                app:np_accessibilityDescriptionEnabled="true"
+                app:np_dividerType="underline"
+                app:np_fadingEdgeEnabled="false"
+                app:np_height="64dp"
+                app:np_order="ascending"
+                app:np_orientation="horizontal"
+                app:np_selectedTypeface="@string/roboto_light"
+                app:np_textSize="16sp"
+                app:np_typeface="@string/roboto_light"
+                app:np_width="180dp"
+                app:np_wrapSelectorWheel="true" />
+
+           <!-- <com.zhouyou.view.seekbar.SignSeekBar
+                android:id="@+id/seek_bar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
                 app:ssb_auto_adjust_section_mark="true"
                 app:ssb_second_track_color="@color/darkyellow"
                 app:ssb_second_track_size="10dp"
@@ -296,50 +329,47 @@
                 app:ssb_thumb_text_size="16sp"
                 app:ssb_touch_to_seek="true"
                 app:ssb_track_color="@color/gray"
-                app:ssb_track_size="7dp" />
+                app:ssb_track_size="7dp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_yourInstallment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_selectIns"/>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_installment"
+-->
+            <TextView
+                android:id="@+id/tv_yourInstallment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-
-                app:cardCornerRadius="16dp"
-                app:cardElevation="30dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/installment_shape"
+                android:elevation="10dp"
+                android:fontFamily="casual"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="Installment"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/view_tbl"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/seek_bar">
+                app:layout_constraintTop_toBottomOf="@+id/horizont_number_picker" />
 
-                <TextView
-                    android:id="@+id/tv_yourInstallment"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/installment_shape"
-                    android:elevation="10dp"
-                    android:fontFamily="casual"
-                    android:gravity="center"
-                    android:visibility="gone"
-                    android:padding="15dp"
-                    android:text="Installment"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-            </androidx.cardview.widget.CardView>
 
             <View
                 android:id="@+id/view_tbl"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
+
+                android:layout_marginBottom="8dp"
                 android:background="@color/gray"
                 app:layout_constraintBottom_toTopOf="@+id/tv_ins_des"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cv_installment" />
+                app:layout_constraintTop_toBottomOf="@+id/horizont_number_picker" />
 
             <TextView
                 android:id="@+id/tv_ins_des"
@@ -370,7 +400,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <Button
-        android:id="@+id/btn_ins_proceed"
+        android:id="@+id/btn_installment_proceed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -382,6 +412,7 @@
         android:padding="10dp"
         android:text="Proceeed To Payment"
         android:textStyle="bold"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

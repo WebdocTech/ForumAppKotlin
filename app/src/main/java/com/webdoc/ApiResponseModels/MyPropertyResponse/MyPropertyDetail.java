@@ -66,6 +66,19 @@ public class MyPropertyDetail {
     @SerializedName("remainingInstallment")
     @Expose
     private String remainingInstallment;
+
+    @SerializedName("totalRemaningAmount")
+    @Expose
+    private String totalRemaningAmount;
+
+    @SerializedName("installmentAmount")
+    @Expose
+    private String installmentAmount;
+
+    @SerializedName("totalPaidAmount")
+    @Expose
+    private String totalPaidAmount;
+
     @SerializedName("features")
     @Expose
     private List<Feature> features = null;
@@ -90,6 +103,29 @@ public class MyPropertyDetail {
 
     public void setName(String name) {
         this.name = name;
+    }
+    public String getTotalRemaningAmount() {
+        return totalRemaningAmount;
+    }
+
+    public void setTotalRemaningAmount(String totalRemaningAmount) {
+        this.totalRemaningAmount = totalRemaningAmount;
+    }
+
+    public String getInstallmentAmount() {
+        return installmentAmount;
+    }
+
+    public void setInstallmentAmount(String installmentAmount) {
+        this.installmentAmount = installmentAmount;
+    }
+
+    public String getTotalPaidAmount() {
+        return totalPaidAmount;
+    }
+
+    public void setTotalPaidAmount(String totalPaidAmount) {
+        this.totalPaidAmount = totalPaidAmount;
     }
 
     public String getDiscription() {

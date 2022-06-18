@@ -58,7 +58,12 @@ class MyPropertyAdapter(var context: Context, var myPropertyResponse: MyProperty
             myPropertyResponse.result!!.myPropertyDetails.get(position).paidInstallment
         val remainingInstallment =
             myPropertyResponse.result!!.myPropertyDetails.get(position).remainingInstallment
-
+        val totalRemaningAmount =
+            myPropertyResponse.result!!.myPropertyDetails.get(position).totalRemaningAmount
+        val installmentAmount =
+            myPropertyResponse.result!!.myPropertyDetails.get(position).installmentAmount
+        val totalPaidAmount =
+            myPropertyResponse.result!!.myPropertyDetails.get(position).totalPaidAmount
         if (sellType.equals("Installment")) {
             holder.cl_installment!!.visibility = View.VISIBLE
             holder.cl_status!!.visibility = View.GONE
@@ -118,6 +123,9 @@ class MyPropertyAdapter(var context: Context, var myPropertyResponse: MyProperty
             intent.putExtra("totalInstallment", totalInstallment)
             intent.putExtra("paidInstallment", paidInstallment)
             intent.putExtra("remainingInstallment", remainingInstallment)
+            intent.putExtra("totalRemaningAmount", totalRemaningAmount)
+            intent.putExtra("installmentAmount", installmentAmount)
+            intent.putExtra("totalPaidAmount", totalPaidAmount)
             context.startActivity(intent)
             Global.position = position
             Global.propDetailList = list

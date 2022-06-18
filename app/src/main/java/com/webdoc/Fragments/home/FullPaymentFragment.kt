@@ -1,5 +1,6 @@
 package com.webdoc.Fragments.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +8,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
+import com.webdoc.Essentials.Global
+import com.webdoc.Payment.PaymentMethodsActivity
 import com.webdoc.theforum.R
 import com.webdoc.theforum.databinding.FragmentFullPaymentBinding
 import java.text.DecimalFormat
 
 class FullPaymentFragment : Fragment() {
     private lateinit var binding: FragmentFullPaymentBinding
+    private var id: Int? = null
+    private var userid: String? = null
     private var description: String? = null
     private var name: String? = null
     private var amount: String? = null
@@ -26,10 +31,12 @@ class FullPaymentFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(description: String, name: String,amount: String,
+        fun newInstance(id: Int,userid: String,description: String, name: String,amount: String,
                         discountAmount: String,area: String,pricePerSqFoot: String,pricePerSqFootdiscount: String): FullPaymentFragment {
             val fragment = FullPaymentFragment()
             val args = Bundle()
+            args.putInt("id", id)
+            args.putString("userid", userid)
             args.putString("description", description)
             args.putString("name", name)
             args.putString("amount", amount)
@@ -48,12 +55,23 @@ class FullPaymentFragment : Fragment() {
     ): View? {
         binding = FragmentFullPaymentBinding.inflate(inflater, container, false)
         initViews()
+        clickListners()
         return binding.root
+    }
+
+    private fun clickListners() {
+       binding.btnFullpaymentProceed.setOnClickListener {
+
+           val intent = Intent(activity as BuyNowActivity, PaymentMethodsActivity::class.java)
+           startActivity(intent)
+       }
     }
 
     private fun initViews() {
         val args = this.arguments
         if (args != null) {
+            id = args.getInt("id")
+            userid = args.getString("userid").toString()
             description = args.getString("description").toString()
             name = args.getString("name").toString()
             amount = args.getString("amount").toString()
@@ -75,7 +93,15 @@ class FullPaymentFragment : Fragment() {
             binding.tvFullPricePerSquareFoot.setText(persqpayformat)
             binding.tvFullPricePerSquareFootDiscount.setText(persqdispayformat)
 
-
+            Global.id = id!!.toInt()
+            Global.userid = userid.toString()
+            Global.installmentAmount = "0"
+            Global.propertyName = name.toString()
+            Global.totalAmount = discountAmount.toString()
+            Global.downPayment = "0"
+            Global.sellType = "Full Payment"
+            Global.modeOfPayment = "Online"
+           // Global.ins = "Online"
         }
 
     }

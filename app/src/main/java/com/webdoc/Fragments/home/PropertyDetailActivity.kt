@@ -3,15 +3,20 @@ package com.webdoc.Fragments.home
 import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.app.DownloadManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 import android.os.Bundle
 import android.os.Environment
+import android.telephony.PhoneNumberUtils
+import android.util.Log
 import android.view.*
 import android.webkit.CookieManager
 import android.webkit.URLUtil
@@ -28,12 +33,14 @@ import com.webdoc.Essentials.PreferencesNew
 import com.webdoc.theforum.R
 import com.webdoc.theforum.databinding.ActivityPropertyDetailBinding
 import java.text.DecimalFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class PropertyDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPropertyDetailBinding
     private lateinit var actionBar: ActionBar
-    var id: String? = null
+    private var propid: Int? = null
     var name: String? = null
     var description: String? = null
     var pricePerSquareFoot: String? = null
@@ -48,6 +55,7 @@ class PropertyDetailActivity : AppCompatActivity() {
     var paymentandfloorplan: String? = null
     var projectName: String? = null
     var projectCompany: String? = null
+    var status: String? = null
     private val WRITE_PERMISSION = 3
     private var userid: String = ""
     lateinit var prefs: SharedPreferences
@@ -73,7 +81,7 @@ class PropertyDetailActivity : AppCompatActivity() {
 //        }
 
         val intent = intent
-        id = intent.getStringExtra("id")
+        propid = intent.getIntExtra("id",0)
         name = intent.getStringExtra("name")
         description = intent.getStringExtra("description")
         pricePerSquareFoot = intent.getStringExtra("pricePerSquareFoot")
@@ -88,24 +96,35 @@ class PropertyDetailActivity : AppCompatActivity() {
         paymentandfloorplan = intent.getStringExtra("paymentandfloorplan")
         projectName = intent.getStringExtra("projectName")
         projectCompany = intent.getStringExtra("projectCompany")
+        status = intent.getStringExtra("status")
 
         prefs = getSharedPreferences("abc", Context.MODE_PRIVATE)
         edit = prefs.edit()
 
         userid = prefs.getString(PreferencesNew.KEY_ApplicationUserId, "").toString()
         val formatter = DecimalFormat("#,###,###")
-        val totalpayformat: String = formatter.format(totalAmount!!.toInt())
+        val totalpayformat: String = formatter.format(discountedAmount!!.toInt())
 
-        binding.tvArea.setText(areainSquareFoot + "sq")
-        binding.tvPrice.setText(totalpayformat)
+        binding.tvArea.setText(areainSquareFoot + "/sq")
+        binding.tvPrice.setText("Rs:"+totalpayformat + "/-")
         binding.tvDescription.setText(description)
-        binding.tvName.setText(name)
+        binding.tvAreainlength.setText(areainlength)
+        binding.tvProjectCompany.setText(projectCompany)
+        binding.tvProjectName.setText(projectName)
+        binding.tvStatus.setText(status)
+
 
         val imageList = ArrayList<SlideModel>()
         imageList.add(SlideModel(R.drawable.apparmentcurrent))
         imageList.add(SlideModel(R.drawable.apparmentupcoming))
         imageList.add(SlideModel(R.drawable.apparmentcurrent))
         binding.imageSlider.setImageList(imageList, ScaleTypes.FIT)
+        if(status.equals("Partial Sold")){
+         //   binding.clBuy.visibility=View.GONE
+        }
+        else if(status.equals("Availabe")){
+          //  binding.clBuy.visibility=View.VISIBLE
+        }
         //  val adapterView = ImageAdapter(this)
         // binding.vpPropertyImg.adapter = adapterView
         //setImage(imagesCounter)
@@ -125,57 +144,40 @@ class PropertyDetailActivity : AppCompatActivity() {
 //                setImage(imagesCounter)
 //            }
 //        }
-//        binding.ivWhatsApp.setOnClickListener {
-//            val phonestr = "+923443333737"
-//            val messagestr = "Hi"
-//
-//
-//            if (iswhatsAppInstalled()!!) {
-//
-//                val sendIntent = Intent("android.intent.action.MAIN")
-//
-//                sendIntent.type = "text/plain"
-//                sendIntent.putExtra(Intent.EXTRA_TEXT, messagestr)
-//                sendIntent.component = ComponentName("com.whatsapp", "com.whatsapp.Conversation")
-//                sendIntent.putExtra(
-//                    "jid",
-//                    PhoneNumberUtils.stripSeparators(phonestr) + "@s.whatsapp.net"
-//                )
-//
-//                startActivity(sendIntent)
-////                val i = Intent(
-////                    Intent.ACTION_VIEW, Uri.parse(
-////                        "https://api.whatsapp.com/send?phone=" + phonestr.toString() +
-////                                "&text=" + messagestr
-////                    )
-////                )
-////                startActivity(i)
-////                val uri =
-////                    Uri.parse("https://api.whatsapp.com/send?phone=" + phonestr + "&text=" + messagestr)
-////
-////                val sendIntent = Intent(Intent.ACTION_VIEW, uri)
-////
-////               startActivity(sendIntent)
-////                message.setText("")
-////                phone.setText("")
-//            } else {
-//                Toast.makeText(this@PropertyDetailActivity, "Whatsapp is not installed", Toast.LENGTH_SHORT)
-//                    .show()
-//            }
-////            val url = "https://api.whatsapp.com/send?phone=+923306809669"
-////            val i = Intent(Intent.ACTION_VIEW)
-////            i.data = Uri.parse(url)
-////            startActivity(i)
-//        }
+        binding.clWhatsapp.setOnClickListener {
+            val phonestr = "+923443333737"
+            val messagestr = "Hi"
+
+            if (iswhatsAppInstalled()!!) {
+                val i = Intent(
+                    Intent.ACTION_VIEW, Uri.parse(
+                        "https://api.whatsapp.com/send?phone=" + phonestr.toString() +
+                                "&text=" + messagestr
+                    )
+                )
+                startActivity(i)
+            } else {
+                Toast.makeText(
+                    this@PropertyDetailActivity,
+                    "Whatsapp is not installed",
+                    Toast.LENGTH_SHORT
+                )
+                    .show()
+            }
+        }
 
         binding.clNavigate.setOnClickListener {
 //            val uri: String =
 //                java.lang.String.format(Locale.ENGLISH, "geo:%f,%f", 33.52811569901712, 73.11350612580407)
 //            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
 //            startActivity(intent)
-
-            val navigationIntentUri = Uri.parse("google.navigation:q=" + 33.54866653953476 + "," +  73.12450943347335)
-            val mapIntent = Intent(Intent.ACTION_VIEW, navigationIntentUri)
+           // http://maps.google.com/maps?q=loc:%f,%f
+           // google.navigation:q=
+//            val navigationIntentUri =
+//                Uri.parse("google.navigation:q=" + 33.54866653953476 + "," + 73.12450943347335)
+            val uri: String =
+                java.lang.String.format("http://maps.google.com/maps?daddr=  33.54874003625339,73.12495291094207")
+            val mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
             mapIntent.setPackage("com.google.android.apps.maps")
             startActivity(mapIntent)
         }
@@ -215,7 +217,7 @@ class PropertyDetailActivity : AppCompatActivity() {
         binding.btnBuyNow.setOnClickListener {
 
             val intent = Intent(this, BuyNowActivity::class.java)
-            intent.putExtra("id", id)
+            intent.putExtra("id", propid)
             intent.putExtra("name", name)
             intent.putExtra("description", description)
             intent.putExtra("pricePerSquareFoot", pricePerSquareFoot)

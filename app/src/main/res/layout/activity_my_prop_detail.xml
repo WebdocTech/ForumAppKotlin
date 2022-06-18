@@ -12,7 +12,7 @@
         android:layout_height="0dp"
 
 
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_pay_inst"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -264,7 +264,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/tv_myProp_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view_buttons" />
+                app:layout_constraintTop_toBottomOf="@+id/rv_payDetails" />
 
 
             <TextView
@@ -274,6 +274,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+
                 android:text="
 Awan Real Estate and Builders (Titanium Agency) Offering Best
 Investment Opportunities From Last 10 Years In Dynamic
@@ -281,15 +283,113 @@ Real Estate Market to its Valued Client Base Nationwide
 and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
  \n(Co-operative Housing Society)"
                 android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_myProp_des" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_inst"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@id/tv_paymentDetails"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_buttons">
+
+                <TextView
+                    android:id="@+id/tv_rem_instal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pay Your Remaining Installments"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.shawnlin.numberpicker.NumberPicker
+                    android:id="@+id/horizontal_number_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_myInstallment"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_rem_instal"
+                    app:np_accessibilityDescriptionEnabled="true"
+                    app:np_dividerType="underline"
+                    app:np_fadingEdgeEnabled="false"
+                    app:np_height="64dp"
+                    app:np_order="ascending"
+                    app:np_orientation="horizontal"
+                    app:np_selectedTypeface="@string/roboto_light"
+                    app:np_textSize="16sp"
+                    app:np_typeface="@string/roboto_light"
+                    app:np_width="180dp"
+                    app:np_wrapSelectorWheel="true" />
+
+                <!--            <com.zhouyou.view.seekbar.SignSeekBar-->
+                <!--                android:id="@+id/my_seek_bar"-->
+                <!--                android:layout_width="0dp"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_marginTop="8dp"-->
+                <!--                android:layout_marginBottom="8dp"-->
+                <!--                app:layout_constraintBottom_toTopOf="@+id/tv_myInstallment"-->
+                <!--                app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                app:layout_constraintStart_toStartOf="parent"-->
+                <!--                app:layout_constraintTop_toBottomOf="@+id/tv_myProp_description"-->
+                <!--                app:ssb_auto_adjust_section_mark="true"-->
+                <!--                app:ssb_second_track_color="@color/darkyellow"-->
+                <!--                app:ssb_second_track_size="10dp"-->
+                <!--                app:ssb_show_section_mark="true"-->
+                <!--                app:ssb_show_section_text="true"-->
+                <!--                app:ssb_show_thumb_shadow="true"-->
+                <!--                app:ssb_show_thumb_text="false"-->
+                <!--                app:ssb_text_space="1dp"-->
+                <!--                app:ssb_thumb_bg_alpha="0.1"-->
+                <!--                app:ssb_thumb_radius="5dp"-->
+                <!--                app:ssb_thumb_radius_on_dragging="2dp"-->
+                <!--                app:ssb_thumb_ratio="0.9"-->
+                <!--                app:ssb_thumb_text_size="16sp"-->
+                <!--                app:ssb_touch_to_seek="true"-->
+                <!--                app:ssb_track_color="@color/gray"-->
+                <!--                app:ssb_track_size="7dp" />-->
+
+                <TextView
+                    android:id="@+id/tv_myInstallment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/installment_shape"
+                    android:elevation="10dp"
+                    android:fontFamily="casual"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="Installment"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_payDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintBottom_toTopOf="@+id/tv_myProp_des"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tbl_ll" />
@@ -307,13 +407,13 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_myProp_description" />
+                app:layout_constraintTop_toBottomOf="@+id/cl_inst" />
 
             <TableLayout
                 android:id="@+id/tbl_ll"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-               android:layout_margin="5dp"
+                android:layout_margin="5dp"
                 android:background="@color/white"
                 android:gravity="center"
                 android:stretchColumns="0,1,2,3,4"
@@ -325,10 +425,10 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_margin="1dp"
-                    android:gravity="center"
+                    android:layout_weight="1"
                     android:background="#000"
+                    android:gravity="center"
 
                     >
 
@@ -339,57 +439,60 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
 
                         android:background="#000"
                         android:gravity="center"
-                        android:padding="5dp"
+                        android:padding="4dp"
+                        android:text="Installment"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:background="#000"
+                        android:gravity="center"
+                        android:padding="4dp"
                         android:text="Date"
                         android:textColor="@color/white"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_column="1"
-
                         android:background="#000"
                         android:gravity="center"
-                        android:padding="5dp"
+                        android:padding="4dp"
                         android:text="Transaction\nID"
                         android:textColor="@color/white"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:layout_column="2"
-
                         android:background="#000"
                         android:gravity="center"
-                        android:padding="5dp"
-                        android:text="Debit"
+                        android:padding="4dp"
+                        android:text="Paid"
                         android:textColor="@color/white"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_column="3"
-
                         android:background="#000"
                         android:gravity="center"
-                        android:padding="5dp"
-                        android:text="Credit"
+                        android:padding="4dp"
+                        android:text="Mode Of Payment"
                         android:textColor="@color/white"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content"
-                        android:layout_column="4"
-                        android:background="#000"
-                        android:gravity="center"
-                        android:padding="5dp"
-                        android:text="Balance"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
                 </TableRow>
 
 
@@ -398,6 +501,23 @@ and Overseas. \n \nAuthorized Agency of Canal Gardens Lahore
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
-
+    <Button
+        android:id="@+id/btn_pay_inst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_gradient"
+        android:drawableRight="@drawable/ic_arrow_right"
+        android:padding="10dp"
+        android:text="Proceeed To Payment"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

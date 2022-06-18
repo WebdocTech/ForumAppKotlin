@@ -47,6 +47,7 @@
         <activity android:name="com.webdoc.payments.PaymentMethods.BankAlfalahAccount.BankAlfalahAccountActivity" />
         <activity android:name="com.webdoc.payments.BankAlfalahWallet.BankAlfalahWalletActivity" />
         <activity android:name="com.webdoc.webviewlibaray.JsBankWallet.JSWalletActivities.JsBankActivity" />
+        <activity android:name="com.webdoc.Payment.StripePayment.StripeActivity" />
         <activity android:name="com.tangxiaolv.telegramgallery.GalleryActivity" />
         <activity
             android:name="com.webdoc.Activities.WelcomeActivity"

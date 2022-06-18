@@ -1,15 +1,18 @@
 package com.webdoc.Adapters
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.webdoc.Activities.MainActivity
 import com.webdoc.Essentials.Global
 import com.webdoc.Fragments.video.VideoResponse.Video
 import com.webdoc.theforum.R
@@ -45,6 +48,7 @@ class VideosAdapter(var context: Context, videoModels: List<Video?>) :
         return Global.videoList.size
     }
 
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val mWebView: WebView
         var cc: CardView
@@ -52,6 +56,7 @@ class VideosAdapter(var context: Context, videoModels: List<Video?>) :
         var tv_doctor_name: TextView
         var tv_date: TextView
         var tv_duration: TextView
+
 
         init {
             mWebView = itemView.findViewById(R.id.webView)

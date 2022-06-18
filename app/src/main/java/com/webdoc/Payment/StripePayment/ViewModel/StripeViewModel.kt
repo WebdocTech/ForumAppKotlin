@@ -1,187 +1,149 @@
 package com.webdoc.Payment.StripePayment.ViewModel
 
+import android.app.Activity
 import android.app.Application
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.gson.JsonObject
+import com.squareup.okhttp.OkHttpClient
+import com.webdoc.ApiResponseModels.LoginResponse.LoginResponse
+import com.webdoc.Essentials.Global
+import com.webdoc.Essentials.jsonPlaceHolderApi
+import com.webdoc.Payment.SoldPropertyResponse.SoldPropertyResponse
 import com.webdoc.Payment.StripePayment.responseModel.DollerRateResponseModel
+import com.webdoc.api.APIInterface
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class StripeViewModel(application: Application) : AndroidViewModel(application) {
-    private var case_id: String? = null
-    private var user_id: String? = null
-    private var amount_paid: String? = null
-    private var bank: String? = null
-    private var account_number: String? = null
-    private var mobile_number: String? = null
-    private var transection_type: String? = null
-    private var transaction_reference_number: String? = null
-    private var transaction_datetime: String? = null
-    private var center: String? = null
-    private var IBCC_amount: String? = null
-    private var webdoc_amount: String? = null
-    private var status: String? = null
-    private var userIdEq: String? = null
+
 
     private val MLD_dollor_response_model: MutableLiveData<DollerRateResponseModel> =
         MutableLiveData<DollerRateResponseModel>()
 
-    //todo: Live Data
-
-/*    fun LD_getDollorRate(): LiveData<DollerRateResponseModel> {
+    fun LD_getDollorRate(): LiveData<DollerRateResponseModel> {
         return MLD_dollor_response_model
     }
 
-    fun callSavePaymentEQApi(keyUserPhone: String?, pkrRate: Double) {
+    private val MLDSoldProperty: MutableLiveData<SoldPropertyResponse> =
+        MutableLiveData<SoldPropertyResponse>()
 
-        val ibccAmount = pkrRate * 140
-        val webdocAmount = pkrRate * 20
-        val bankCharges = pkrRate * 15
-        val courierFee = pkrRate * 5
-        val totalAmount = pkrRate * 180
-        user_id = "Global.userLoginResponse.getResult().getCustomerProfile().getId()"
-        amount_paid = totalAmount.toString()
-        bank = "Stripe Payment"
-        account_number = "Global.userLoginResponse.getResult().getCustomerProfile().getMobile()"
-        mobile_number = "Global.userLoginResponse.getResult().getCustomerProfile().getMobile()"
-        transection_type = "International Payment"
-        transaction_reference_number = ""
-        transaction_datetime = ""
-        center = "Global.center"
-        IBCC_amount = ibccAmount.toString()
-        webdoc_amount = webdocAmount.toString()
-        status = "Success"
-        val bank_charges = bankCharges.toString()
-        val courier_amount = courierFee.toString()
-        val order_id = ""
-        userIdEq = "Global.userLoginResponse.getResult().getCustomerProfile().getId()"
-        val platform = "Android"
-        callingSavePaymentForEquilance(
-            case_id, amount_paid!!, bank!!, account_number,
-            mobile_number, transection_type!!, transaction_reference_number!!,
-            transaction_datetime!!, userIdEq, status!!, webdoc_amount!!, IBCC_amount!!,
-            bank_charges, courier_amount, order_id, platform
-        )
-
-        *//*  if (Global.isFromEquivalence) {
-            //call savePayment Api for Equilance
-            callingSavePaymentForEquilance(case_id, amount_paid, bank, account_number,
-                    mobile_number, transection_type, transaction_reference_number,
-                    transaction_datetime, userIdEq, status, webdoc_amount, IBCC_amount,
-                    bank_charges, courier_amount, order_id, platform);
-        }*//*
+    fun LDSoldProperty(): LiveData<SoldPropertyResponse> {
+        return MLDSoldProperty
     }
 
-    private fun callingSavePaymentForEquilance(
-        case_id: String?,
-        amount_paid: String,
+
+   fun callingSoldPropertyApi(
+        propertyId: Int,
+        customerProfileId: String,
+        sellType: String,
+        modeOfPayment: String?,
+        transectionId: String?,
         bank: String,
-        account_number: String?,
-        mobile_number: String?,
-        transection_type: String,
-        transaction_reference_number: String,
-        transaction_datetime: String,
-        userIdEq: String?,
-        status: String,
-        webdoc_amount: String,
-        ibcc_amount: String,
-        bank_charges: String,
-        courier_amount: String,
-        order_id: String,
-        platform: String
+        paidAmount: String,
+        noOfInstallment: String,
+        downPayment: String?,
+        totalAmount: String,
+        propertyName: String,
+        installmentAmount: String
     ) {
-        val requestModel = EquilanceRequestModel()
-        requestModel.setCase_id(case_id)
-        requestModel.setAmount_paid(amount_paid)
-        requestModel.setBank(bank)
-        requestModel.setAccount_number(account_number)
-        requestModel.setMobile_number(mobile_number)
-        requestModel.setTransection_type(transection_type)
-        requestModel.setTransaction_reference_number(transaction_reference_number)
-        requestModel.setTransaction_datetime(transaction_datetime)
-        requestModel.setUser_id(
-            java.lang.String.valueOf(
-                Global.equivalenceInitiateCaseResponse.getResult().getIntiateCaseResponseDetails()
-                    .getCustomerId()
-            )
-        )
-        requestModel.setIbcC_amount(IBCC_amount)
-        requestModel.setWebdoc_amount(webdoc_amount)
-        requestModel.setStatus(status)
-        requestModel.setBank_charges(bank_charges)
-        requestModel.setCourier_amount(courier_amount)
-        requestModel.setOrder_id(order_id)
-        requestModel.setPlatform(platform)
+        val postParams = JsonObject()
+        postParams.addProperty("propertyId", propertyId)
+        postParams.addProperty("customerProfileId", customerProfileId)
+        postParams.addProperty("sellType", sellType)
+        postParams.addProperty("modeOfPayment", modeOfPayment)
+        postParams.addProperty("transectionId", transectionId)
+        postParams.addProperty("bank", bank)
+        postParams.addProperty("paidAmount", paidAmount)
+        postParams.addProperty("noOfInstallment", noOfInstallment)
+        postParams.addProperty("downPayment", downPayment)
+        postParams.addProperty("totalAmount", totalAmount)
+        postParams.addProperty("propertyName", propertyName)
+        postParams.addProperty("installmentAmount", installmentAmount)
         val interceptor = HttpLoggingInterceptor()
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-        var client: OkHttpClient? = OkHttpClient()
-        client = OkHttpClient.Builder()
-            .connectTimeout(10, TimeUnit.SECONDS)
-            .writeTimeout(10, TimeUnit.SECONDS)
-            .readTimeout(10, TimeUnit.MINUTES)
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        var client: okhttp3.OkHttpClient? = okhttp3.OkHttpClient()
+        client = okhttp3.OkHttpClient.Builder()
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .writeTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.MINUTES)
             .addInterceptor(interceptor)
             .build()
-        val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("https://ibcc.webddocsystems.com/api/Equivalence/")
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://theforumapi.webddocsystems.com/api/Properties/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client) // Set HttpClient to be used by Retrofit
             .build()
-        val jsonPlaceHolderApi: jsonPlaceHolderApi = retrofit.create(jsonPlaceHolderApi::class.java)
-        val call1: Call<SavePaymentInfo> =
-            jsonPlaceHolderApi.savePaymentInfoforEquialance(requestModel)
-        call1.enqueue(object : Callback<SavePaymentInfo> {
+        val apiInterface = retrofit.create(APIInterface::class.java)
+        val call: Call<SoldPropertyResponse> = apiInterface.soldProperty(postParams)
+        call.enqueue(object : Callback<SoldPropertyResponse> {
             override fun onResponse(
-                call: Call<SavePaymentInfo>,
-                response: Response<SavePaymentInfo>
+                call: Call<SoldPropertyResponse>,
+                response: Response<SoldPropertyResponse>
             ) {
-                val savePaymentInfo: SavePaymentInfo? = response.body()
-                if (!response.isSuccessful()) {
-                    Toast.makeText(
-                        Global.applicationContext,
-                        response.body().toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                val soldPropertyResponse = response.body()
+                MLDSoldProperty.postValue(soldPropertyResponse)
+                if (!response.isSuccessful) {
+                    Toast.makeText(getApplication(), response.body().toString(), Toast.LENGTH_SHORT)
+                        .show()
                     return
                 }
-                MLD_save_payment_info_from_equivalance.postValue(savePaymentInfo)
             }
 
-            override fun onFailure(call: Call<SavePaymentInfo>, t: Throwable) {
-                Toast.makeText(
-                    Global.applicationContext,
-                    "onFailure called in save payment api equilance ",
-                    Toast.LENGTH_SHORT
-                ).show()
-                Log.i("kh", t.message!!)
+            override fun onFailure(call: Call<SoldPropertyResponse>, t: Throwable) {
+                //         Toast.makeText(Global.applicationContext, "onFailure called ", Toast.LENGTH_SHORT).show();
                 call.cancel()
             }
         })
     }
 
     fun callDollorRateApi(activity: Activity?) {
-
-        Global.utils!!.showCustomLoadingDialog(activity)
-        val apiInterface: APIInterface = APIClient.getClient("https://openexchangerates.org/")
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        var client: okhttp3.OkHttpClient? = okhttp3.OkHttpClient()
+        client = okhttp3.OkHttpClient.Builder()
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .writeTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.MINUTES)
+            .addInterceptor(interceptor)
+            .build()
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://openexchangerates.org/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client) // Set HttpClient to be used by Retrofit
+            .build()
+        val apiInterface = retrofit.create(APIInterface::class.java)
         val call: Call<DollerRateResponseModel> = apiInterface.callDollorRate()
-        call.enqueue(object : Callback<DollerRateResponseModel?> {
+        call.enqueue(object : Callback<DollerRateResponseModel> {
             override fun onResponse(
-                call: Call<DollerRateResponseModel?>,
-                response: Response<DollerRateResponseModel?>
+                call: Call<DollerRateResponseModel>,
+                response: Response<DollerRateResponseModel>
             ) {
-                Global.utils!!.hideCustomLoadingDialog()
-                if (response.isSuccessful()) {
-                    MLD_dollor_response_model.postValue(response.body())
-                } else {
-                    Toast.makeText(activity, "something went wrong !", Toast.LENGTH_SHORT)
+                val dollarRateResponse = response.body()
+                MLD_dollor_response_model.postValue(dollarRateResponse)
+                if (!response.isSuccessful) {
+                    Toast.makeText(getApplication(), response.body().toString(), Toast.LENGTH_SHORT)
                         .show()
+                    return
                 }
             }
 
-            override fun onFailure(call: Call<DollerRateResponseModel?>, t: Throwable) {
-                Global.utils!!.hideCustomLoadingDialog()
-                Log.i("dsd", t.message!!)
-                Toast.makeText(activity, "Ooops something went wrong !", Toast.LENGTH_SHORT)
-                    .show()
+            override fun onFailure(call: Call<DollerRateResponseModel>, t: Throwable) {
+                //         Toast.makeText(Global.applicationContext, "onFailure called ", Toast.LENGTH_SHORT).show();
+                call.cancel()
             }
         })
-
-    }*/
+    }
 }
+
+
+
+
